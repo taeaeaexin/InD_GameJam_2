@@ -49,6 +49,15 @@ namespace Throwables
 
         protected virtual void Interact()
         {
+            StopToCollision();
+        }
+
+        public void StopToCollision()
+        {
+            _rb.velocity = Vector2.zero;
+            _rb.angularVelocity = 0f;
+            _rb.gravityScale = 0f;
+            _rb.bodyType = RigidbodyType2D.Static;
         }
     }
 }
