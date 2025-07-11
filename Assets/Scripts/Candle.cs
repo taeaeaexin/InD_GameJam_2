@@ -13,6 +13,7 @@ public class Candle : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
+    
     public void ThrowCandle()
     {
         isThrow = true;
