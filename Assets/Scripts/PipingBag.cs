@@ -2,11 +2,9 @@ using System.Collections;
 using Throws;
 using UnityEngine;
 
-public class CreamShooter : Thrower
+public class PipingBag : Thrower
 {
     [SerializeField] private float launchDelay = 0.1f;
-
-    private Vector2 _startPosition;
 
     private WaitForSeconds _wait;
 
@@ -31,13 +29,13 @@ public class CreamShooter : Thrower
 
     private IEnumerator ShootRoutine(Vector2 dir, float power)
     {
-        for (var i = 0; i < launchCount; i++)
+        for (var i = 0; i < throwableCount; i++)
         {
-            var cream = Instantiate(spawnPrefab, throwPoint.position, Quaternion.identity);
+            var cream = DoSpawn();
 
             var rb = cream.GetComponent<Rigidbody2D>();
 
-            rb.AddForce(dir * power, ForceMode2D.Impulse);
+            DoThrow(rb);
 
             yield return _wait;
         }

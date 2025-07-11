@@ -4,10 +4,10 @@ namespace Throws
 {
     public class Thrower : MonoBehaviour
     {
-        [SerializeField] protected GameObject spawnPrefab;
+        [SerializeField] protected GameObject throwablePrefab;
         [SerializeField] protected Transform throwPoint;
-        [SerializeField] protected float launchCount = 10f;
-        [SerializeField] private float maxLaunchForce = 15f;
+        [SerializeField] protected float throwableCount = 10f;
+        [SerializeField] private float maxThrowForce = 15f;
 
         protected Vector2 ThrowDirection;
         protected float ThrowForce;
@@ -39,14 +39,22 @@ namespace Throws
 
             ThrowDirection = offset.normalized;
             
-            print(offset.magnitude);
-            
-            ThrowForce = Mathf.InverseLerp(0, 1000, offset.magnitude) * maxLaunchForce;
+            ThrowForce = Mathf.InverseLerp(0, 1000, offset.magnitude) * maxThrowForce;
         }
 
         protected virtual void OnMouseButtonUp(Vector2 mousePosition)
         {
             
+        }
+
+        protected GameObject DoSpawn()
+        {
+            return Instantiate(throwablePrefab, throwPoint.position, Quaternion.identity);
+        }
+
+        protected void DoThrow(Rigidbody2D rb)
+        {
+            rb.AddForce(ThrowDirection * ThrowForce, ForceMode2D.Impulse);
         }
     }
 }
