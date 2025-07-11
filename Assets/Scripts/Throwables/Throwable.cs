@@ -56,10 +56,10 @@ namespace Throwables
 
         protected virtual void Interact()
         {
-            Destroy(gameObject);
             StopToCollision();
         }
 
+        // fix later
         public void StopToCollision()
         {
             _rb.velocity = Vector2.zero;

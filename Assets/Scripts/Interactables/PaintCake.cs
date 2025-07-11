@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Interactables
@@ -8,7 +7,7 @@ namespace Interactables
     {
         [SerializeField] private Image paintedCakeImage;
 
-        override public void Interact()
+        public override void Interact()
         {
             // Sprite.sprite = paintedCakeImage.sprite;
             Sprite.color = Color.black;

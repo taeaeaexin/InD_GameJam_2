@@ -12,5 +12,10 @@ namespace Throwables
             
             ThrowableSprite.sprite = sprites[Random.Range(0, sprites.Length)];
         }
+
+        protected override void Interact()
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 930232835214866364}
   - component: {fileID: 5266528687850066798}
   - component: {fileID: 8996294421608957228}
-  - component: {fileID: 1755390284765140398}
+  - component: {fileID: 904756857730726253}
   m_Layer: 0
   m_Name: BerryPrefab
   m_TagString: Untagged
@@ -149,7 +149,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &1755390284765140398
+--- !u!114 &904756857730726253
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
