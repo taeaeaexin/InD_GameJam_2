@@ -9,7 +9,7 @@ public class Cake : MonoBehaviour
     private bool isThrown = false;
 
     public float throwForce = 10f;
-    public float stopThreshold = 0.05f;
+    public float stopThreshold = 0.2f;
     public float requiredStopTime = 1.0f;
     private float stopTimer = 0f;
 
@@ -57,14 +57,7 @@ public class Cake : MonoBehaviour
                 stopTimer += Time.deltaTime;
                 if (stopTimer >= requiredStopTime)
                 {
-                    Debug.Log("🍰 케이크 멈춤 → 트럭 출발!");
-
-                    TruckMover truck = FindObjectOfType<TruckMover>();
-                    if (truck != null)
-                    {
-                        truck.StartTruck();
-                        this.enabled = false;
-                    }
+                    TriggerTruck();
                 }
             }
             else
@@ -73,9 +66,34 @@ public class Cake : MonoBehaviour
             }
         }
     }
+
     void OnBecameInvisible()
     {
-        Debug.Log("🍰 케이크가 화면 밖으로 나감!");
-        Destroy(gameObject);
+        if (!isThrown) return;
+
+        TruckMover truck = FindObjectOfType<TruckMover>();
+        if (truck != null)
+        {
+            if (!truck.hasStarted)
+            {
+                Debug.Log("❌ 케이크를 트럭 출발 전에 밖으로 날려서 실패!");
+                Destroy(gameObject);
+            }
+            else
+            {
+                Debug.Log("✅ 케이크가 트럭 출발 후에 안전하게 화면 밖으로 사라졌습니다.");
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void TriggerTruck()
+    {
+        TruckMover truck = FindObjectOfType<TruckMover>();
+        if (truck != null && !truck.hasStarted)
+        {
+            truck.StartTruck();
+            this.enabled = false;
+        }
     }
 }

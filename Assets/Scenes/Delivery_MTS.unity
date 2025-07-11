@@ -261,6 +261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 132865113}
+  - component: {fileID: 132865114}
   m_Layer: 0
   m_Name: Truck
   m_TagString: Untagged
@@ -288,6 +289,29 @@ Transform:
   - {fileID: 1223652739}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &132865114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132865112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe15e7b3bd5840cfaa56ac39c5ba015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasStarted: 0
+  speed: 1
+  moveDuration: 15
+  verticalJitterAmount: 0.05
+  jitterInterval: 0.1
+  backwardForce: 0.5
+  packageLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  packages: []
+  screenRightBound: {fileID: 547149405}
 --- !u!1 &169410909
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,6 +737,37 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &547149404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 547149405}
+  m_Layer: 0
+  m_Name: ScreenRightBound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &547149405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547149404}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12, y: 0.1500001, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &701128576
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,7 +1033,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7424883, g: 0.8962264, b: 0.38470095, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1072,7 +1127,7 @@ Transform:
   m_GameObject: {fileID: 801804953}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.89, y: 1.97, z: 0}
+  m_LocalPosition: {x: 9.94, y: 1.94, z: 0}
   m_LocalScale: {x: 0.40113735, y: 8.145834, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1203,7 +1258,7 @@ Transform:
   m_GameObject: {fileID: 1047465201}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.1951, y: 1.7615, z: -0.034442104}
+  m_LocalPosition: {x: 2.09, y: -1.13, z: -0.034442104}
   m_LocalScale: {x: 1.3675517, y: 0.9494145, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1343,6 +1398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1223652739}
   - component: {fileID: 1223652740}
+  - component: {fileID: 1223652741}
   m_Layer: 0
   m_Name: TruckSprite
   m_TagString: Untagged
@@ -1417,6 +1473,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1223652741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223652738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe15e7b3bd5840cfaa56ac39c5ba015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasStarted: 0
+  speed: 1
+  moveDuration: 15
+  verticalJitterAmount: 0.05
+  jitterInterval: 0.1
+  backwardForce: 0.5
+  packageLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  packages: []
+  screenRightBound: {fileID: 0}
 --- !u!1 &1282977543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,7 +1524,7 @@ Transform:
   m_GameObject: {fileID: 1282977543}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.32, y: -1.1028, z: -0.034442104}
+  m_LocalPosition: {x: 5.53, y: 0.36, z: -0.034442104}
   m_LocalScale: {x: 1.8373662, y: 1.1602098, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1602,8 +1681,8 @@ Transform:
   m_GameObject: {fileID: 1360812148}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.0712, y: -1.44, z: 0}
-  m_LocalScale: {x: 0.22336756, y: 1.6745023, z: 1}
+  m_LocalPosition: {x: 2.0219, y: -2.0445, z: 0}
+  m_LocalScale: {x: 0.12475916, y: 0.4654666, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 132865113}
@@ -1922,7 +2001,7 @@ Transform:
   m_GameObject: {fileID: 1542213010}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.24, y: 4.1, z: -0.034442104}
+  m_LocalPosition: {x: 4.81, y: 4.28, z: -0.034442104}
   m_LocalScale: {x: 2.0172443, y: 1.5861343, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2080,7 +2159,7 @@ Transform:
   m_GameObject: {fileID: 1586925719}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.12, y: -0.36, z: -0.034442104}
+  m_LocalPosition: {x: 7.6, y: 2.77, z: -0.034442104}
   m_LocalScale: {x: 1.8373662, y: 2.8058276, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2396,7 +2475,7 @@ Transform:
   m_GameObject: {fileID: 1921691600}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.0919, y: 0.4247, z: -0.034442104}
+  m_LocalPosition: {x: 7.67, y: 0.22, z: -0.034442104}
   m_LocalScale: {x: 1.4010966, y: 1.1950963, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2539,7 +2618,7 @@ GameObject:
   - component: {fileID: 2007001836}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2706,3 +2785,4 @@ SceneRoots:
   - {fileID: 2007001838}
   - {fileID: 1464472737}
   - {fileID: 702268464}
+  - {fileID: 547149405}

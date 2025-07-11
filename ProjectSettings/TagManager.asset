@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Target
   - Cake
+  - Ground
   layers:
   - Default
   - TransparentFX
