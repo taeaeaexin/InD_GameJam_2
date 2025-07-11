@@ -50,48 +50,26 @@ public class Strawberry : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("충돌 감지: " + collision.collider.name);
-        if (hasLanded || !isThrown) return;
+        Debug.Log($"isThrown: {isThrown}, hasLanded: {hasLanded}"); // 상태 확인용 로그
+
+        // 임시로 조건 막음 → 디버깅을 위해 무조건 실행되게 함
+        // if (hasLanded || !isThrown) return;
 
         if (collision.collider.CompareTag("Cake"))
         {
-            float speed = rb.velocity.magnitude;
-            float rotSpeed = Mathf.Abs(rb.angularVelocity);
-
-            Debug.Log($"속도: {speed}, 회전속도: {rotSpeed}");
-
-            if (speed < 5f && rotSpeed < 200f) // 조건 완화
-            {
-                Debug.Log("착지 조건 통과 → StickToCake 예정");
-                hasLanded = true;
-
-                // 살짝 튀는 느낌
-                rb.velocity = Vector2.zero;
-                rb.angularVelocity = 0f;
-                rb.AddForce(Vector2.up * 1.5f, ForceMode2D.Impulse);
-
-                Invoke(nameof(StickToCake), 0.15f); // 조금만 기다렸다가 고정
-            }
-            else
-            {
-                Debug.Log("착지 조건 불충분 → StickToCake 안 함");
-            }
+            Debug.Log("무조건 StickToCake 호출합니다 (디버깅용)");
+            StickToCake();
         }
     }
 
     void StickToCake()
     {
         Debug.Log("StickToCake 호출됨!");
-        
+
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0f;
         rb.gravityScale = 0f;
-        rb.bodyType = RigidbodyType2D.Kinematic;
-        rb.constraints = RigidbodyConstraints2D.FreezeAll; // 완전 고정
-        GetComponent<Collider2D>().enabled = false;
-
-        // 눌림 & 파묻힘 연출
-        transform.position = new Vector3(transform.position.x, transform.position.y - 0.05f, transform.position.z);
-        transform.localScale = new Vector3(1f, 0.9f, 1f);
+        rb.bodyType = RigidbodyType2D.Static;
 
         Debug.Log("딸기 고정 완료 🍓");
     }
