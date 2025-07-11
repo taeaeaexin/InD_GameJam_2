@@ -51,10 +51,5 @@ namespace Throws
         {
             return Instantiate(throwablePrefab, throwPoint.position, Quaternion.identity);
         }
-
-        protected void DoThrow(Rigidbody2D rb)
-        {
-            rb.AddForce(ThrowDirection * ThrowForce, ForceMode2D.Impulse);
-        }
     }
 }

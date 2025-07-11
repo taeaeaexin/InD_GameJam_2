@@ -29,7 +29,7 @@ public class JwhThrow : Thrower
 
         isDragging = false;
         rb.isKinematic = false;
-        DoThrow(rb);
+        //DoThrow(rb);
         rb.AddTorque(ThrowPower);
     }
 }
