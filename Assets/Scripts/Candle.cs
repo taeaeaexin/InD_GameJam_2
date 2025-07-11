@@ -22,10 +22,10 @@ public class Candle : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Cake"))
         {
-            rb.velocity = Vector2.zero;         // 속도 즉시 정지
-            rb.angularVelocity = 0f;            // 회전도 멈춤
-            rb.isKinematic = true;              // 물리 꺼서 안 밀리게
-            rb.gravityScale = 0f;               // 중력도 제거
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+            rb.isKinematic = true;
+            rb.gravityScale = 0f;
         }
     }
 }

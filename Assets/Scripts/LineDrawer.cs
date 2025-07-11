@@ -2,20 +2,24 @@ using UnityEngine;
 
 public class LineDrawer : MonoBehaviour
 {
-    public Camera cam; // 화면→월드 변환용 카메라
-    private LineRenderer line;
-    private Vector2 startPos;
+    [SerializeField] private float lineWidth = 0.1f;
+    private Camera _cam;
+    private LineRenderer _line;
 
     private void Awake()
     {
-        line = GetComponent<LineRenderer>();
-        line.positionCount = 2;
-        line.enabled = false;
-        if (cam == null) cam = Camera.main;
+        _line = GetComponent<LineRenderer>();
+        _line.positionCount = 2;
+        _line.enabled = false;
+        if (_cam == null) _cam = Camera.main;
+        
     }
 
     private void Start()
     {
+        _line.startWidth = lineWidth;
+        _line.endWidth = lineWidth;
+        
         InputSystem.Instance.OnMouseButtonDown += OnMouseButtonDown;
         InputSystem.Instance.OnMouseButtonHold += OnMouseButtonHold;
         InputSystem.Instance.OnMouseButtonUp += OnMouseButtonUp;
@@ -23,19 +27,22 @@ public class LineDrawer : MonoBehaviour
 
     private void OnMouseButtonDown(Vector2 mousePos)
     {
-        startPos = cam.ScreenToWorldPoint(mousePos);
-        line.enabled = true;
-        line.SetPosition(0, startPos);
+        var p = _cam.ScreenToWorldPoint(Input.mousePosition);
+        p.z = 0f;
+        _line.SetPosition(0, p);
+        _line.SetPosition(1, p);
+        _line.enabled = true;
     }
 
     private void OnMouseButtonHold(Vector2 mousePos)
     {
-        var currPos = cam.ScreenToWorldPoint(mousePos);
-        line.SetPosition(1, currPos);
+        var p = _cam.ScreenToWorldPoint(Input.mousePosition);
+        p.z = 0f;
+        _line.SetPosition(1, p);
     }
 
     private void OnMouseButtonUp(Vector2 obj)
     {
-        line.enabled = false;
+        _line.enabled = false;
     }
 }
