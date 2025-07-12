@@ -8,7 +8,7 @@ namespace Throws
 {
     public class HandThrower : Thrower
     {
-        private Rigidbody2D throwableRb;
+        private Rigidbody2D _throwableRb;
         private Throwable _throwable;
 
         protected override void Start()
@@ -16,14 +16,22 @@ namespace Throws
             base.Start();
 
             Spawn();
-            throwableRb = CurrentThrowable.GetComponent<Rigidbody2D>();
+            
+            _throwableRb = CurrentThrowable.GetComponent<Rigidbody2D>();
             _throwable = CurrentThrowable.GetComponent<Throwable>();
-            throwableRb.isKinematic = true;
+            _throwableRb.isKinematic = true;
+        }
+        
+        protected override void OnMouseButtonHold(Vector2 mousePosition)
+        {
+            if (IsThrown) return;
+            
+            base.OnMouseButtonHold(mousePosition);
         }
 
         protected override void OnMouseButtonUp(Vector2 mousePosition)
         {
-            throwableRb.isKinematic = false;
+            _throwableRb.isKinematic = false;
             _throwable.Throw(ThrowDirection, ThrowForce);
         }
     }
