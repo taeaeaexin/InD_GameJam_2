@@ -302,6 +302,8 @@ MonoBehaviour:
   currentStageText: {fileID: 571507298}
   clearUI: {fileID: 148256867}
   AllClearUI: {fileID: 1029406036}
+  GuideUI: {fileID: 255098412500844136, guid: 8e7939e36134cbe46bcde7cbe87601fa, type: 3}
+  idleThreshold: 5
 --- !u!1 &110316109
 GameObject:
   m_ObjectHideFlags: 0
@@ -2427,6 +2429,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045fa1c571ba44782bb4de4c4a885f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cakePrefabs: {fileID: 0}
+  cakeThrowerList: []
   throwerList:
   - {fileID: 3984104663968010464, guid: ea465539ae6be7d45962e4b485ee6942, type: 3}
   interactableList:
@@ -2435,8 +2439,9 @@ MonoBehaviour:
   zoom: {fileID: 1021319614}
   currentThrower: {fileID: 0}
   currentInteractable: {fileID: 0}
+  cake: {fileID: 0}
   currentStage: 0
-  maxStage: 3
+  currentCakeStage: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
