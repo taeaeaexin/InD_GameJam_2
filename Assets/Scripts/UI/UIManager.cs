@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI currentStageText;
     public GameObject clearUI;
+    public GameObject AllClearUI;
     public static UIManager Instance { get; private set; }
 
     void Awake()
@@ -46,7 +47,8 @@ public class UIManager : MonoBehaviour
 
     public void OnStageEnd()
     {
-
+        if (StageManager.Instance.maxStage <= StageManager.Instance.currentStage)
+            AllClearUI.SetActive(true);
     }
 
     public void OnStageFailed()

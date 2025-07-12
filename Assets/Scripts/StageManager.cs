@@ -51,11 +51,19 @@ public class StageManager : MonoBehaviour
         OnStageStart?.Invoke();
     }
 
+    public void StageRestart()
+    {
+        Destroy(currentThrower.gameObject);
+        Destroy(currentInteractable.gameObject);
+        StageStart();
+    }
+
     public void StageEnd()
     {
         if (maxStage > currentStage)
+        {
             currentStage++;
-
+        }
         OnStageEnd?.Invoke();
 
         Destroy(currentThrower.gameObject);
@@ -65,7 +73,7 @@ public class StageManager : MonoBehaviour
     public void StageFailed()
     {
         OnStageFailed?.Invoke();
-        OnStageEnd?.Invoke();
+        StageRestart();
     }
 
     public void StageClear()
