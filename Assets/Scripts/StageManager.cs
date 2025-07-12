@@ -65,6 +65,7 @@ public class StageManager : MonoBehaviour
 
     public void StageStart()
     {
+        SetRandomCameraBackgroundColor();
         if (IsCakeStage() && currentCakeStage < cakeThrowerList.Count)
         {
             cake.gameObject.SetActive(true);
@@ -147,4 +148,16 @@ public class StageManager : MonoBehaviour
 
         StageStart();
     }
+    public void SetRandomCameraBackgroundColor()
+    {
+        Camera cam = Camera.main;
+        if (cam == null) return;
+
+        float r = UnityEngine.Random.Range(100, 151) / 255f;
+        float g = UnityEngine.Random.Range(100, 151) / 255f;
+        float b = UnityEngine.Random.Range(100, 151) / 255f;
+
+        cam.backgroundColor = new Color(r, g, b);
+    }
+
 }
