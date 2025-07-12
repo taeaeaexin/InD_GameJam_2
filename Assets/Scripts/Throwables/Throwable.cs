@@ -19,7 +19,11 @@ namespace Throwables
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (!collision.collider.CompareTag("Target")) return;
+            if (!collision.collider.CompareTag("Target"))
+            {
+                StageManager.Instance.StageFailed();
+                return;
+            }
 
             var interactable = collision.collider.GetComponent<Interactable>();
 
@@ -33,7 +37,7 @@ namespace Throwables
             if (_isThrown) return;
 
             _isThrown = true;
-            
+
             var direction = Spread(throwDirection, spreadAngle);
             
             _rb.AddForce(direction * throwForce, ForceMode2D.Impulse);

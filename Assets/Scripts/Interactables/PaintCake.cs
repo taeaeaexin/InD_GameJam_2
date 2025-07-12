@@ -11,6 +11,8 @@ namespace Interactables
         {
             // Sprite.sprite = paintedCakeImage.sprite;
             Sprite.color = Color.black;
+
+            StageManager.Instance.StageClear();
         }
     }
 }

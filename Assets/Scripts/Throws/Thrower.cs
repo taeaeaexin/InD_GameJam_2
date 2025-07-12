@@ -56,5 +56,10 @@ namespace Throws
         {
             return Instantiate(throwablePrefab, throwPoint.position, Quaternion.identity);
         }
+
+        public float GetThrowableCount()
+        {
+            return throwableCount;
+        }
     }
 }
