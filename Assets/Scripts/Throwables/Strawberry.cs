@@ -14,7 +14,7 @@ namespace Throwables
             originalScale = transform.localScale;
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        protected override void OnCollisionEnter2D(Collision2D collision)
         {
             if (isStuck) return;
 
