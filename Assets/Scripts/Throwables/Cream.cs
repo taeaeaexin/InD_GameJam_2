@@ -16,7 +16,7 @@ namespace Throwables
 
         protected override void OnCollisionEnter2D(Collision2D collision)
         {
-            if (!collision.collider.CompareTag("Target"))
+            if (!collision.collider.CompareTag("Cake"))
             {
                 Interact();
                 

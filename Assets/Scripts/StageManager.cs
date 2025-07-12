@@ -1,31 +1,29 @@
-using Interactables;
 using System;
 using System.Collections.Generic;
-using Throwables;
+using Interactables;
 using Throws;
 using UnityEngine;
-using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviour
 {
+    public static StageManager Instance;
+
+    [SerializeField] private GameObject cakePrefabs;
+    [SerializeField] private List<GameObject> cakeThrowerList;
     [SerializeField] private List<GameObject> throwerList;
     [SerializeField] private List<GameObject> interactableList;
     [SerializeField] private GameObject failedZone;
-    [SerializeField] Camera zoom;
-    public static StageManager Instance;
-
-    public event Action OnStageStart;
-    public event Action OnStageEnd;
-    public event Action OnStageFailed;
-    public event Action OnStageClear;
-    public event Action OnNextStage;
+    [SerializeField] private Camera zoom;
 
     public Thrower currentThrower;
     public Interactable currentInteractable;
+    public Interactable cake;
 
-    public int currentStage = 0;
-    public int maxStage = 3;
+    public int currentStage;
+    public int currentCakeStage;
+
+    public int MaxStage { get; private set; }
 
     private void Awake()
     {
@@ -39,81 +37,115 @@ public class StageManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void Start()
+
+    private void Start()
     {
+        MaxStage = cakeThrowerList.Count + throwerList.Count;
+        
+        cake = Instantiate(cakePrefabs).GetComponent<Interactable>();
+
+        cake.gameObject.SetActive(false);
+
         StageStart();
+    }
+
+    public event Action OnStageStart;
+    public event Action OnStageEnd;
+    public event Action OnStageFailed;
+    public event Action OnStageClear;
+    public event Action OnNextStage;
+
+    private bool IsCakeStage()
+    {
+        return currentStage % 2 == 0;
     }
 
     public void StageStart()
     {
-        currentThrower = Instantiate(throwerList[currentStage]).GetComponent<Thrower>();
-        currentInteractable = Instantiate(interactableList[currentStage]).GetComponent<Interactable>();
+        if (IsCakeStage())
+        {
+            cake.gameObject.SetActive(true);
+
+            currentInteractable = cake;
+            currentThrower = Instantiate(cakeThrowerList[currentCakeStage]).GetComponent<Thrower>();
+        }
+        else
+        {
+            currentInteractable = Instantiate(interactableList[currentStage]).GetComponent<Interactable>();
+            currentThrower = Instantiate(throwerList[currentStage]).GetComponent<Thrower>();
+        }
 
         zoom.transform.localPosition = currentInteractable.transform.localPosition + Vector3.back;
-        
-        // failedZone.SetActive(!currentInteractable.CompareTag("Cake"));
-        
+
         OnStageStart?.Invoke();
     }
 
     public void StageRestart()
     {
-        Destroy(currentThrower.gameObject);
-        Destroy(currentInteractable.gameObject);
-        
+        if (IsCakeStage())
+        {
+            Destroy(currentThrower.gameObject);
+            ((Cake)cake).Clear();
+        }
+        else
+        {
+            Destroy(currentThrower.gameObject);
+            Destroy(currentInteractable.gameObject);
+        }
+
         StageStart();
     }
 
     public void StageEnd()
     {
-        if (maxStage > currentStage)
+        OnStageEnd?.Invoke();
+
+        if (IsCakeStage())
         {
+            cake.gameObject.SetActive(false);
+
+            currentCakeStage++;
+        }
+        else
+        {
+            Destroy(currentInteractable.gameObject);
+            
             currentStage++;
         }
         
-        OnStageEnd?.Invoke();
-
         Destroy(currentThrower.gameObject);
-        Destroy(currentInteractable.gameObject);
     }
 
     public void StageFailed()
     {
         OnStageFailed?.Invoke();
-        
+
         StageRestart();
     }
 
     public void StageClear()
     {
-        if (SoundManager.Instance) SoundManager.Instance.Play_R_SFX("sound_cheer_", 4);
-        print("Stage Clear");
+        if (SoundManager.Instance) SoundManager.Instance.Play_R_SFX("sound_throw_", 4);
+        
         OnStageClear?.Invoke();
     }
 
     public void NextStage()
     {
         StageEnd();
-        print("StageEnd");
 
         OnNextStage?.Invoke();
-        print("OnNextStage?.Invoke");
 
         StageStart();
-        print("StageStart");
-    }
-    public void LoadSceneByName(string sceneName)
-    {
-        if (!string.IsNullOrEmpty(sceneName))
-        {
-            SceneManager.LoadScene(sceneName);
-        }
     }
 
-    // 게임 종료
+    public void LoadSceneByName(string sceneName)
+    {
+        if (!string.IsNullOrEmpty(sceneName)) SceneManager.LoadScene(sceneName);
+    }
+
     public void QuitGame()
     {
-        Debug.Log("게임 종료 요청");
         Application.Quit();
     }
 }

@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
 
     public void OnStageEnd()
     {
-        if (StageManager.Instance.maxStage <= StageManager.Instance.currentStage)
+        if (StageManager.Instance.MaxStage <= StageManager.Instance.currentStage)
             AllClearUI.SetActive(true);
     }
 
