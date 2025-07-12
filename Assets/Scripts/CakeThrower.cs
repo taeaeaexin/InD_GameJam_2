@@ -14,8 +14,9 @@ public class Cake : Thrower
     public float requiredStopTime = 1.0f;
     private float stopTimer = 0f;
 
-    void Start()
+protected override void Start()
     {
+        Debug.Log("🔄 Cake.Start() called");
         rb = GetComponent<Rigidbody2D>();
         rb.bodyType = RigidbodyType2D.Static;
     }
@@ -35,8 +36,12 @@ public class Cake : Thrower
 
     void Update()
     {
+        Debug.Log("🟢 Cake.Update() running");
+
         if (isThrown && rb.bodyType == RigidbodyType2D.Dynamic)
         {
+            Debug.Log($"[Cake Debug] vel={rb.velocity.magnitude:F3}, ang={Mathf.Abs(rb.angularVelocity):F3}, stopTimer={stopTimer:F2}");
+
             if (rb.velocity.magnitude < stopThreshold && Mathf.Abs(rb.angularVelocity) < 1f)
             {
                 stopTimer += Time.deltaTime;
@@ -74,11 +79,24 @@ public class Cake : Thrower
 
     private void TriggerTruck()
     {
+        Debug.Log("🟨 TriggerTruck() 진입");
+
         TruckMover truck = FindObjectOfType<TruckMover>();
-        if (truck != null && !truck.hasStarted)
+        if (truck == null)
         {
+            Debug.LogWarning("❗ TruckMover가 씬에서 발견되지 않았습니다.");
+            return;
+        }
+
+        if (!truck.hasStarted)
+        {
+            Debug.Log("✅ TriggerTruck() 조건 통과: 트럭 출발 시작.");
             truck.StartTruck();
             this.enabled = false;
+        }
+        else
+        {
+            Debug.Log("⚠️ TriggerTruck() 조건 실패: 이미 트럭이 출발함.");
         }
     }
     protected override void OnDestroy()
