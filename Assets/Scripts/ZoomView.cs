@@ -61,7 +61,7 @@ public class ZoomView : MonoBehaviour
         string[] files = Directory.GetFiles(filePath, "*.png");
         if (files.Length == 0)
         {
-            Debug.LogWarning("해당 폴더에 PNG 파일이 없습니다.");
+            Debug.LogWarning("해당 폴더에 dlPNG 파일이 없습니다.");
             return null;
         }
 
