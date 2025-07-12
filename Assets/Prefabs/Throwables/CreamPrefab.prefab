@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8800584424031505315}
   m_Layer: 6
   m_Name: CreamPrefab
-  m_TagString: Untagged
+  m_TagString: Throwable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e58b6f2652045e1966796177d265ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  restitution: 1
   sprites:
   - {fileID: -88470993, guid: d58d6b3331b4df34791f17028208959e, type: 3}
   - {fileID: 686794710, guid: d58d6b3331b4df34791f17028208959e, type: 3}

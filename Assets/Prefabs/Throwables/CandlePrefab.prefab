@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7572160801013677063}
   m_Layer: 0
   m_Name: CandlePrefab
-  m_TagString: Untagged
+  m_TagString: Throwable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,8 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
-    type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -173,6 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f076216368c11a428b1ab15f2f7ad0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  restitution: 1
 --- !u!114 &7572160801013677063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,3 +185,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8748c4c0faae46419f255964f138173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  restitution: 1

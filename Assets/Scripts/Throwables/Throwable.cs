@@ -26,11 +26,11 @@ namespace Throwables
 
         protected virtual void OnCollisionEnter2D(Collision2D collision)
         {
-            if (!collision.collider.CompareTag("Target"))
-            {
-                StageManager.Instance.StageFailed();
-                return;
-            }
+            if (!collision.collider.CompareTag("Failed")) return;
+            
+            StageManager.Instance.StageFailed();
+            
+            if (!collision.collider.CompareTag("Target")) return;
 
             var interactable = collision.collider.GetComponent<Interactable>();
 

@@ -10,7 +10,7 @@ public class StageManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> throwerList;
     [SerializeField] private List<GameObject> interactableList;
-
+    [SerializeField] Camera zoom;
     public static StageManager Instance;
 
     public event Action OnStageStart;
@@ -47,7 +47,8 @@ public class StageManager : MonoBehaviour
         currentThrower = Instantiate(throwerList[currentStage]).GetComponent<Thrower>();
         currentInteractable = Instantiate(interactableList[currentStage]).GetComponent<Interactable>();
 
-        print("start");
+        zoom.transform.localPosition = currentInteractable.transform.localPosition + Vector3.back;
+        
         OnStageStart?.Invoke();
     }
 
@@ -55,6 +56,7 @@ public class StageManager : MonoBehaviour
     {
         Destroy(currentThrower.gameObject);
         Destroy(currentInteractable.gameObject);
+        
         StageStart();
     }
 
@@ -73,12 +75,14 @@ public class StageManager : MonoBehaviour
     public void StageFailed()
     {
         OnStageFailed?.Invoke();
+        
         StageRestart();
     }
 
     public void StageClear()
     {
         print("Stage Clear");
+        
         OnStageClear?.Invoke();
     }
 
