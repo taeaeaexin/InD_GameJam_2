@@ -2428,13 +2428,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwerList:
-  - {fileID: 5358718823065988516, guid: 66e5d36202039ab43a9e0544018ee795, type: 3}
-  - {fileID: 5358718823065988516, guid: 66e5d36202039ab43a9e0544018ee795, type: 3}
-  - {fileID: 5358718823065988516, guid: 66e5d36202039ab43a9e0544018ee795, type: 3}
+  - {fileID: 7294802180126058242, guid: f211f3cd3c5d39340b96f76b33ebcca2, type: 3}
+  - {fileID: 7294802180126058242, guid: f211f3cd3c5d39340b96f76b33ebcca2, type: 3}
+  - {fileID: 7294802180126058242, guid: f211f3cd3c5d39340b96f76b33ebcca2, type: 3}
   interactableList:
-  - {fileID: 2064289877707444773, guid: 37a9c196322021f4fabbe99b9b13c5ba, type: 3}
-  - {fileID: 2064289877707444773, guid: 37a9c196322021f4fabbe99b9b13c5ba, type: 3}
-  - {fileID: 2064289877707444773, guid: 37a9c196322021f4fabbe99b9b13c5ba, type: 3}
+  - {fileID: 6365298785538284495, guid: 79f95a3b3b1ecd840bd20cf6027845ab, type: 3}
+  - {fileID: 6365298785538284495, guid: 79f95a3b3b1ecd840bd20cf6027845ab, type: 3}
+  - {fileID: 6365298785538284495, guid: 79f95a3b3b1ecd840bd20cf6027845ab, type: 3}
   currentThrower: {fileID: 0}
   currentInteractable: {fileID: 0}
   currentStage: 0
