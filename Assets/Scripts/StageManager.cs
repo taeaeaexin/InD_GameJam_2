@@ -66,13 +66,21 @@ public class StageManager : MonoBehaviour
     public void StageStart()
     {
         SetRandomCameraBackgroundColor();
+        // 1. All Clear 처리 먼저 검사
+        if (_currentStage >= cakeThrowerList.Count)
+        {
+            UIManager.Instance.ShowAllClearUI();
+            return;
+        }
+
+        // 2. 케이크 스테이지일 경우
         if (IsCakeStage() && currentCakeStage < cakeThrowerList.Count)
         {
             cake.gameObject.SetActive(true);
-
             currentInteractable = cake;
             currentThrower = Instantiate(cakeThrowerList[currentCakeStage]).GetComponent<Thrower>();
         }
+        // 3. 일반 스테이지일 경우
         else
         {
             currentInteractable = Instantiate(interactableList[_currentStage]).GetComponent<Interactable>();
