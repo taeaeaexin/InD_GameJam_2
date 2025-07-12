@@ -26,7 +26,11 @@ namespace Throwables
 
         protected virtual void OnCollisionEnter2D(Collision2D collision)
         {
-            if (!collision.collider.CompareTag("Target")) return;
+            if (!collision.collider.CompareTag("Target"))
+            {
+                StageManager.Instance.StageFailed();
+                return;
+            }
 
             var interactable = collision.collider.GetComponent<Interactable>();
 
@@ -53,7 +57,7 @@ namespace Throwables
             if (_isThrown) return;
 
             _isThrown = true;
-            
+
             var direction = Spread(throwDirection, spreadAngle);
             
             _rb.AddForce(direction * throwForce, ForceMode2D.Impulse);
@@ -85,7 +89,7 @@ namespace Throwables
             _rb.velocity = Vector2.zero;
             _rb.angularVelocity = 0f;
             _rb.gravityScale = 0f;
-            _rb.bodyType = RigidbodyType2D.Static;
+            Col.enabled = false;
         }
 
         public void Bound(Vector2 normal)

@@ -15,6 +15,8 @@ namespace Throws
         
         private Vector2 _startPosition;
 
+        protected GameObject CurrentThrowable;
+
         protected virtual void Start()
         {
             InputSystem.Instance.OnMouseButtonDown += OnMouseButtonDown;
@@ -27,6 +29,8 @@ namespace Throws
             InputSystem.Instance.OnMouseButtonDown -= OnMouseButtonDown;
             InputSystem.Instance.OnMouseButtonHold -= OnMouseButtonHold;
             InputSystem.Instance.OnMouseButtonUp -= OnMouseButtonUp;
+
+            Destroy(CurrentThrowable);
         }
 
         protected virtual void OnMouseButtonDown(Vector2 mousePosition)
@@ -52,9 +56,9 @@ namespace Throws
             IsThrown = true;
         }
 
-        protected GameObject DoSpawn()
+        protected void Spawn()
         {
-            return Instantiate(throwablePrefab, throwPoint.position, Quaternion.identity);
+            CurrentThrowable = Instantiate(throwablePrefab, throwPoint.position, Quaternion.identity);
         }
     }
 }
