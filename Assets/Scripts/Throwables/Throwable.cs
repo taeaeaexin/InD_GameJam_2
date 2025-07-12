@@ -6,7 +6,13 @@ namespace Throwables
     [RequireComponent(typeof(Rigidbody2D))]
     public class Throwable : MonoBehaviour
     {
+        [Header("탄성 계수")]
+        [Tooltip("1 = 완전 탄성 반사(속도 유지), 0.5 = 에너지 50% 손실")]
+        [Range(0f, 1f)]
+        [SerializeField] protected float restitution = 1f;
+        
         protected SpriteRenderer ThrowableSprite;
+        protected Collider2D Col;
         private Rigidbody2D _rb;
         private bool _isThrown;
         private bool _isTorque;
@@ -15,6 +21,7 @@ namespace Throwables
         {
             ThrowableSprite = GetComponent<SpriteRenderer>();
             _rb = GetComponent<Rigidbody2D>();
+            Col = GetComponent<Collider2D>();
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -26,6 +33,19 @@ namespace Throwables
             }
 
             var interactable = collision.collider.GetComponent<Interactable>();
+
+            interactable.Interact();
+            
+            Interact();
+            
+            Bound(collision.contacts[0].normal);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (!collision.CompareTag("Target")) return;
+
+            var interactable = collision.GetComponent<Interactable>();
 
             interactable.Interact();
             
@@ -70,6 +90,15 @@ namespace Throwables
             _rb.angularVelocity = 0f;
             _rb.gravityScale = 0f;
             _rb.bodyType = RigidbodyType2D.Static;
+        }
+
+        public void Bound(Vector2 normal)
+        {
+            var incomingVel = _rb.velocity;
+
+            var reflectedVel = Vector2.Reflect(incomingVel, normal);
+
+            _rb.velocity = reflectedVel * restitution;
         }
     }
 }

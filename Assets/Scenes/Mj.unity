@@ -807,7 +807,6 @@ GameObject:
   m_Component:
   - component: {fileID: 194956826}
   - component: {fileID: 194956825}
-  - component: {fileID: 194956824}
   - component: {fileID: 194956823}
   m_Layer: 0
   m_Name: Zoom Camera
@@ -860,14 +859,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &194956824
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194956822}
-  m_Enabled: 1
 --- !u!20 &194956825
 Camera:
   m_ObjectHideFlags: 0
@@ -1852,7 +1843,7 @@ Transform:
   m_GameObject: {fileID: 933456701}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.33, y: 0.88, z: -0.013593226}
+  m_LocalPosition: {x: -3.94, y: -1.51, z: -0.013593226}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1870,7 +1861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f094fa74823e494897f1b6f577b6d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwablePrefab: {fileID: 2817655746075274392, guid: 9efd89b77ebb74945b401d483edb7dfb, type: 3}
+  throwablePrefab: {fileID: 53743486771760775, guid: de549d4e66dc24e2ebda3c1d91aca6d6, type: 3}
   throwPoint: {fileID: 933456702}
   throwableCount: 1
   maxThrowForce: 15
@@ -3282,7 +3273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1775000325
 Transform:
   m_ObjectHideFlags: 0
@@ -3508,7 +3499,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2001612182
 Transform:
   m_ObjectHideFlags: 0
@@ -3821,7 +3812,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &2048972628
 SpriteRenderer:
   m_ObjectHideFlags: 0

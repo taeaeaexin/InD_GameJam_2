@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum ButtonType
@@ -12,9 +10,10 @@ public enum ButtonType
 public class UIButtonHandler : MonoBehaviour
 {
     [SerializeField] private ButtonType buttonType;
+
     public void ButtonAction()
     {
-        switch(buttonType)
+        switch (buttonType)
         {
             case ButtonType.Start:
                 GameManager.Instance.LoadScene("MainScene");

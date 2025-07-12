@@ -6,11 +6,13 @@ namespace Interactables
     {
         protected SpriteRenderer Sprite;
         protected Collider2D Col;
+        protected Rigidbody2D Rb;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             Sprite = GetComponent<SpriteRenderer>();
             Col = GetComponent<Collider2D>();
+            Rb = GetComponent<Rigidbody2D>();
         }
         
         public virtual void Interact()
