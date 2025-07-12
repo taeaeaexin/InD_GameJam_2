@@ -54,7 +54,6 @@ namespace Interactables
             
             _elapsed = 0f;
             _hasEntered = false;
-            Debug.Log("트리거 벗어남 → 타이머 리셋");
         }
 
         private void OnTriggerStay2D(Collider2D other)
@@ -68,7 +67,6 @@ namespace Interactables
             }
             
             _elapsed += Time.fixedDeltaTime;
-            Debug.Log($"트리거 내 머문 시간: {_elapsed:F2}s");
 
             if (!(_elapsed >= targetTime)) return;
 

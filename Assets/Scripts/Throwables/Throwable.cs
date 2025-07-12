@@ -16,14 +16,14 @@ namespace Throwables
         
         protected SpriteRenderer ThrowableSprite;
         protected Collider2D Col;
-        private Rigidbody2D _rb;
-        private bool _isThrown;
+        protected Rigidbody2D Rb;
+        protected bool IsThrown;
         private bool _isTorque;
         
         protected virtual void Awake()
         {
             ThrowableSprite = GetComponent<SpriteRenderer>();
-            _rb = GetComponent<Rigidbody2D>();
+            Rb = GetComponent<Rigidbody2D>();
             Col = GetComponent<Collider2D>();
         }
 
@@ -57,13 +57,13 @@ namespace Throwables
 
         public void Throw(Vector2 throwDirection, float throwForce, float spreadAngle = 0f)
         {
-            if (_isThrown) return;
+            if (IsThrown) return;
 
-            _isThrown = true;
+            IsThrown = true;
 
             var direction = Spread(throwDirection, spreadAngle);
             
-            _rb.AddForce(direction * throwForce, ForceMode2D.Impulse);
+            Rb.AddForce(direction * throwForce, ForceMode2D.Impulse);
         }
 
         private Vector2 Spread(Vector2 throwDirection, float spreadAngle)
@@ -78,7 +78,7 @@ namespace Throwables
 
         public void Torque(float torque)
         {
-            _rb.AddTorque(torque);
+            Rb.AddTorque(torque);
         }
 
         protected virtual void Interact()
@@ -89,19 +89,19 @@ namespace Throwables
         // fix later
         public void StopToCollision()
         {
-            _rb.velocity = Vector2.zero;
-            _rb.angularVelocity = 0f;
-            _rb.gravityScale = 0f;
+            Rb.velocity = Vector2.zero;
+            Rb.angularVelocity = 0f;
+            Rb.gravityScale = 0f;
             Col.enabled = false;
         }
 
         public void Bound(Vector2 normal)
         {
-            var incomingVel = _rb.velocity;
+            var incomingVel = Rb.velocity;
 
             var reflectedVel = Vector2.Reflect(incomingVel, normal);
 
-            _rb.velocity = reflectedVel * restitution;
+            Rb.velocity = reflectedVel * restitution;
         }
     }
 }

@@ -86,7 +86,6 @@ public class StageManager : MonoBehaviour
     public void StageClear()
     {
         print("Stage Clear");
-        
         OnStageClear?.Invoke();
     }
 

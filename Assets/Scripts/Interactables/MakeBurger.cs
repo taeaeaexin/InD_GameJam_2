@@ -12,11 +12,7 @@ namespace Interactables
 
         private bool _hasEntered = false;
 
-        private bool isClear;
-        protected override void Awake()
-        {
-            base.Awake();
-        }
+        private bool _isClear;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -38,14 +34,14 @@ namespace Interactables
 
         private void FixedUpdate()
         {
-            if (_hasEntered && !isClear)
+            if (_hasEntered && !_isClear)
             {
                 _elapsed += Time.fixedDeltaTime;
                 Debug.Log($"트리거 내 머문 시간: {_elapsed:F2}s");
 
                 if (!(_elapsed >= targetTime)) return;
                 StageManager.Instance.StageClear();
-                isClear = true;
+                _isClear = true;
             }
         }
         

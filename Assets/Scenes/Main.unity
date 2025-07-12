@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LineDrawer
       objectReference: {fileID: 0}
+    - target: {fileID: 1386095722696274382, guid: 1d291bbe8cd0ac74f892df5f41067932, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6200251942737305780, guid: 1d291bbe8cd0ac74f892df5f41067932, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1543,31 +1547,47 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1591084232}
     - target: {fileID: 252472577274964770, guid: a4bd0d204e8b79c43935c44d4cedc5f1, type: 3}
+      propertyPath: maxStage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 252472577274964770, guid: a4bd0d204e8b79c43935c44d4cedc5f1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 252472577274964770, guid: a4bd0d204e8b79c43935c44d4cedc5f1, type: 3}
       propertyPath: failedZone
       value: 
       objectReference: {fileID: 1338773309}
     - target: {fileID: 252472577274964770, guid: a4bd0d204e8b79c43935c44d4cedc5f1, type: 3}
       propertyPath: throwerList.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 252472577274964770, guid: a4bd0d204e8b79c43935c44d4cedc5f1, type: 3}
       propertyPath: throwerList.Array.data[0]
       value: 
-      objectReference: {fileID: 3984104663968010464, guid: 69aa5d6cf361e7c4eab41272365b2f43, type: 3}
+      objectReference: {fileID: 1382378500015431376, guid: ebc054640cb7fb44c88065ca3365ba3a, type: 3}
     - target: {fileID: 252472577274964770, guid: a4bd0d204e8b79c43935c44d4cedc5f1, type: 3}
       propertyPath: throwerList.Array.data[1]
+      value: 
+      objectReference: {fileID: 3984104663968010464, guid: 69aa5d6cf361e7c4eab41272365b2f43, type: 3}
+    - target: {fileID: 252472577274964770, guid: a4bd0d204e8b79c43935c44d4cedc5f1, type: 3}
+      propertyPath: throwerList.Array.data[2]
       value: 
       objectReference: {fileID: 1109785078942860828, guid: 7480ab7049b706141992cfd7cc070f68, type: 3}
     - target: {fileID: 252472577274964770, guid: a4bd0d204e8b79c43935c44d4cedc5f1, type: 3}
       propertyPath: interactableList.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 252472577274964770, guid: a4bd0d204e8b79c43935c44d4cedc5f1, type: 3}
       propertyPath: interactableList.Array.data[0]
       value: 
-      objectReference: {fileID: 6465411071029905211, guid: c11507ae347aaf142a28bd6b070606de, type: 3}
+      objectReference: {fileID: 4065439710204047336, guid: adefe89679aaae04195e4e34bb7e6557, type: 3}
     - target: {fileID: 252472577274964770, guid: a4bd0d204e8b79c43935c44d4cedc5f1, type: 3}
       propertyPath: interactableList.Array.data[1]
+      value: 
+      objectReference: {fileID: 6465411071029905211, guid: c11507ae347aaf142a28bd6b070606de, type: 3}
+    - target: {fileID: 252472577274964770, guid: a4bd0d204e8b79c43935c44d4cedc5f1, type: 3}
+      propertyPath: interactableList.Array.data[2]
       value: 
       objectReference: {fileID: 6365298785538284495, guid: 79f95a3b3b1ecd840bd20cf6027845ab, type: 3}
     - target: {fileID: 3528528787666945422, guid: a4bd0d204e8b79c43935c44d4cedc5f1, type: 3}
@@ -1613,6 +1633,10 @@ PrefabInstance:
     - target: {fileID: 5753011991925508828, guid: a4bd0d204e8b79c43935c44d4cedc5f1, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753011991925508828, guid: a4bd0d204e8b79c43935c44d4cedc5f1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -6,8 +6,16 @@ using UnityEngine;
 public class ZoomView : MonoBehaviour
 {
     [SerializeField] RenderTexture rt;
+
+    public void Start()
+    {
+        StageManager.Instance.OnStageClear += () =>
+        {
+            SaveToPNG();
+        };
+    }
     
-    public void SaveToPNG(string filePath = "./temp/")
+    public void SaveToPNG(string filePath = "./screenshot/")
     {
         // 1) 현재 Active RT 백업
         var prev = RenderTexture.active;
@@ -25,8 +33,8 @@ public class ZoomView : MonoBehaviour
 
         var s = Guid.NewGuid().ToString()[..8];
         
-        File.WriteAllBytes($"{filePath}/{s}.jpg", bytes);
-        Debug.Log($"Saved RenderTexture to: {filePath}");
+        File.WriteAllBytes($"{filePath}/{s}.png", bytes);
+        print($"Saved RenderTexture to: {filePath}");
 
         // 6) 복원 및 메모리 정리
         RenderTexture.active = prev;

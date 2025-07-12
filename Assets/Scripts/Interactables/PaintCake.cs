@@ -28,7 +28,7 @@ namespace Interactables
         
         IEnumerator CheckGameClear()
         {
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(7f);
 
             if (_interactedCount > 5)
             {

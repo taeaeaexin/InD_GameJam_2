@@ -18,6 +18,7 @@ namespace Interactables
         
         public virtual void Interact(Collision2D collision)
         {
+            
         }
     }
 }
