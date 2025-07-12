@@ -71,12 +71,12 @@ public class UIManager : MonoBehaviour
 
     public void OnStageStart()
     {
-        currentStageText.text = $"STAGE : {(StageManager.Instance.currentStage + 1).ToString()}";
+        currentStageText.text = $"STAGE : {(StageManager.Instance._allStage + 1).ToString()}";
     }
 
     public void OnStageEnd()
     {
-        if (StageManager.Instance.MaxStage <= StageManager.Instance.currentStage)
+        if (StageManager.Instance.MaxStage <= StageManager.Instance._allStage)
             AllClearUI.SetActive(true);
     }
 
