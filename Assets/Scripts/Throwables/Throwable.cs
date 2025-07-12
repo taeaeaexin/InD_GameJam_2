@@ -24,26 +24,26 @@ namespace Throwables
             Col = GetComponent<Collider2D>();
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        protected virtual void OnCollisionEnter2D(Collision2D collision)
         {
             if (!collision.collider.CompareTag("Target")) return;
 
             var interactable = collision.collider.GetComponent<Interactable>();
 
-            interactable.Interact();
+            interactable.Interact(collision);
             
             Interact();
             
             Bound(collision.contacts[0].normal);
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        protected virtual void OnTriggerEnter2D(Collider2D collision)
         {
             if (!collision.CompareTag("Target")) return;
 
             var interactable = collision.GetComponent<Interactable>();
 
-            interactable.Interact();
+            interactable.Interact(null);
             
             Interact();
         }

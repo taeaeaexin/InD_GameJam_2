@@ -1,3 +1,4 @@
+using Throwables;
 using UnityEngine;
 
 namespace Interactables
@@ -15,7 +16,7 @@ namespace Interactables
             Rb = GetComponent<Rigidbody2D>();
         }
         
-        public virtual void Interact()
+        public virtual void Interact(Collision2D collision)
         {
         }
     }
