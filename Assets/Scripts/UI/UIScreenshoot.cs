@@ -1,15 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIScreenshoot : MonoBehaviour
+namespace UI
 {
-    public ZoomView zoomView;
-    public RawImage image;
-    private void OnEnable()
+    public class UIScreenshoot : MonoBehaviour
     {
-        Texture2D texture2D = zoomView.LoadRandomPNG();
-        image.texture = texture2D;
+        public ZoomView zoomView;
+        public RawImage image;
+        private void OnEnable()
+        {
+            Texture2D texture2D = zoomView.LoadRandomPNG();
+            image.texture = texture2D;
+        }
     }
 }

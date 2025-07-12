@@ -147,14 +147,4 @@ public class StageManager : MonoBehaviour
 
         StageStart();
     }
-
-    public void LoadSceneByName(string sceneName)
-    {
-        if (!string.IsNullOrEmpty(sceneName)) SceneManager.LoadScene(sceneName);
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
 }

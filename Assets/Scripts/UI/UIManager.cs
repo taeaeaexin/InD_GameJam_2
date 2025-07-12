@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -65,6 +66,9 @@ public class UIManager : MonoBehaviour
     public void OnStageStart()
     {
         currentStageText.text = $"STAGE : {(StageManager.Instance.allStage + 1).ToString()}";
+        
+        allClearUI.SetActive(false);
+        statusUI.SetActive(true);
     }
 
     public void OnStageEnd()
@@ -85,6 +89,13 @@ public class UIManager : MonoBehaviour
     private void OnNextStage()
     {
         HideClearUI();
+    }
+
+    public void GameEnd()
+    {
+        allClearUI.SetActive(true);
+        statusUI.SetActive(false);
+        SceneManager.LoadScene("Title", LoadSceneMode.Single);
     }
 
     public void ShowClearUI()

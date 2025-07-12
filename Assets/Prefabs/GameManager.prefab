@@ -10,8 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3528528787666945422}
   - component: {fileID: 3594084512775762584}
-  - component: {fileID: 252472577274964770}
-  - component: {fileID: 6800988602106635075}
+  - component: {fileID: 5380754924589091696}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -46,27 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe048ee2588eb1f44884acc5e3119fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &252472577274964770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5753011991925508828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 045fa1c571ba44782bb4de4c4a885f7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  throwerList: []
-  interactableList: []
-  failedZone: {fileID: 8093213293340892792, guid: 347202326ab9f1f4dbaa0859a2df8bd9, type: 3}
-  zoom: {fileID: 0}
-  currentThrower: {fileID: 0}
-  currentInteractable: {fileID: 0}
-  currentStage: 0
-  maxStage: 3
---- !u!114 &6800988602106635075
+--- !u!114 &5380754924589091696
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
