@@ -30,7 +30,7 @@ namespace Throwables
 					// 물리 멈춤
 					rb.velocity = Vector2.zero;
 					rb.angularVelocity = 0f;
-
+					rb.isKinematic = true;
 					// col이 존재하고, 내부 값으로 분기 처리
 					if (col != null)
 					{
