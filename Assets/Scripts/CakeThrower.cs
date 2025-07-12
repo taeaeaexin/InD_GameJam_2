@@ -1,8 +1,9 @@
 using UnityEngine;
 using System.Collections;
+using Throws;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Cake : MonoBehaviour
+public class Cake : Thrower
 {
     private Rigidbody2D rb;
     private bool hasLanded = false;
@@ -19,32 +20,16 @@ public class Cake : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Static;
     }
 
-    void OnMouseDown()
+    protected override void OnMouseButtonUp(Vector2 mousePosition)
     {
-        if (hasLanded || isThrown) return;
-
-        Vector3 startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        startPos.z = 0;
-        StartCoroutine(DragAndThrow(startPos));
-    }
-
-    private IEnumerator DragAndThrow(Vector3 startPos)
-    {
-        while (Input.GetMouseButton(0))
-        {
-            yield return null;
-        }
-
-        Vector3 endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        endPos.z = 0;
-
-        Vector2 force = (startPos - endPos) * throwForce;
+        if (isThrown) return;
 
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = 1f;
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0f;
-        rb.AddForce(force, ForceMode2D.Impulse);
+        rb.AddForce(ThrowDirection * ThrowForce, ForceMode2D.Impulse);
+
         isThrown = true;
     }
 
@@ -94,6 +79,15 @@ public class Cake : MonoBehaviour
         {
             truck.StartTruck();
             this.enabled = false;
+        }
+    }
+    protected override void OnDestroy()
+    {
+        if (InputSystem.Instance != null)
+        {
+            InputSystem.Instance.OnMouseButtonDown -= OnMouseButtonDown;
+            InputSystem.Instance.OnMouseButtonHold -= OnMouseButtonHold;
+            InputSystem.Instance.OnMouseButtonUp -= OnMouseButtonUp;
         }
     }
 }
