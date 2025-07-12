@@ -767,7 +767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &351745405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2104,8 +2104,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentStageText: {fileID: 75821662}
   clearUI: {fileID: 316687828}
-  AllClearUI: {fileID: 351745404}
-  GuideUI: {fileID: 255098412500844136, guid: 8e7939e36134cbe46bcde7cbe87601fa, type: 3}
+  allClearUI: {fileID: 351745404}
+  statusUI: {fileID: 1463516132}
+  guideUI: {fileID: 255098412500844136, guid: 8e7939e36134cbe46bcde7cbe87601fa, type: 3}
   idleThreshold: 5
 --- !u!4 &1923620449
 Transform:
