@@ -45,9 +45,9 @@ namespace Throws
         {
             for (var i = 0; i < throwableCount; i++)
             {
-                var cream = DoSpawn();
+                Spawn();
 
-                var throwable = cream.GetComponent<Throwable>();
+                var throwable = CurrentThrowable.GetComponent<Throwable>();
                 
                 throwable.Throw(ThrowDirection, ThrowForce, 20f);
 

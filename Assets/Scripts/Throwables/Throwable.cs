@@ -89,7 +89,7 @@ namespace Throwables
             _rb.velocity = Vector2.zero;
             _rb.angularVelocity = 0f;
             _rb.gravityScale = 0f;
-            _rb.bodyType = RigidbodyType2D.Static;
+            Col.enabled = false;
         }
 
         public void Bound(Vector2 normal)

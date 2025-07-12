@@ -4,23 +4,25 @@ using System.Collections.Generic;
 using Throwables;
 using Throws;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class StageManager : MonoBehaviour
 {
-    [SerializeField] private List<Thrower> throwerList;
-    [SerializeField] private List<Interactable> interactableList;
+    [SerializeField] private List<GameObject> throwerList;
+    [SerializeField] private List<GameObject> interactableList;
 
     public static StageManager Instance;
 
     public event Action OnStageStart;
     public event Action OnStageEnd;
     public event Action OnStageFailed;
-    public event Action OnStageSucceed;
+    public event Action OnStageClear;
+    public event Action OnNextStage;
 
-    private Thrower currentThrower;
-    private Interactable currentInteractable;
+    public Thrower currentThrower;
+    public Interactable currentInteractable;
 
-    public int currentStage;
+    public int currentStage = 0;
     public int maxStage = 3;
 
     private void Awake()
@@ -37,29 +39,27 @@ public class StageManager : MonoBehaviour
     }
     void Start()
     {
-        currentStage = 0;
-
         StageStart();
     }
 
     public void StageStart()
     {
-        var rand = UnityEngine.Random.Range(0, throwerList.Count);
+        currentThrower = Instantiate(throwerList[currentStage]).GetComponent<Thrower>();
+        currentInteractable = Instantiate(interactableList[currentStage]).GetComponent<Interactable>();
 
-        currentThrower = Instantiate(throwerList[rand]);
-        currentInteractable = Instantiate(interactableList[rand]);
-
+        print("start");
         OnStageStart?.Invoke();
-
-        currentStage++;
     }
 
     public void StageEnd()
     {
+        if (maxStage > currentStage)
+            currentStage++;
+
         OnStageEnd?.Invoke();
 
-        Destroy(currentThrower);
-        Destroy(currentInteractable);
+        Destroy(currentThrower.gameObject);
+        Destroy(currentInteractable.gameObject);
     }
 
     public void StageFailed()
@@ -71,7 +71,18 @@ public class StageManager : MonoBehaviour
     public void StageClear()
     {
         print("Stage Clear");
-        OnStageSucceed?.Invoke();
-        OnStageEnd?.Invoke();
+        OnStageClear?.Invoke();
+    }
+
+    public void NextStage()
+    {
+        StageEnd();
+        print("StageEnd");
+
+        OnNextStage?.Invoke();
+        print("OnNextStage?.Invoke");
+
+        StageStart();
+        print("StageStart");
     }
 }

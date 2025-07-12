@@ -10,7 +10,7 @@ namespace Interactables
         public override void Interact()
         {
             // Sprite.sprite = paintedCakeImage.sprite;
-            Sprite.color = Color.black;
+            Sprite.color = Color.gray;
 
             StageManager.Instance.StageClear();
         }
