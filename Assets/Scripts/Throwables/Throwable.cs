@@ -1,3 +1,4 @@
+using Interactables;
 using UnityEngine;
 
 namespace Throwables
@@ -5,12 +6,14 @@ namespace Throwables
     [RequireComponent(typeof(Rigidbody2D))]
     public class Throwable : MonoBehaviour
     {
+        protected SpriteRenderer ThrowableSprite;
         private Rigidbody2D _rb;
         private bool _isThrown;
         private bool _isTorque;
 
-        private void Awake()
+        protected virtual void Awake()
         {
+            ThrowableSprite = GetComponent<SpriteRenderer>();
             _rb = GetComponent<Rigidbody2D>();
         }
 
@@ -18,6 +21,10 @@ namespace Throwables
         {
             if (!collision.collider.CompareTag("Target")) return;
 
+            var interactable = collision.collider.GetComponent<Interactable>();
+
+            interactable.Interact();
+            
             Interact();
         }
 
@@ -52,6 +59,7 @@ namespace Throwables
             StopToCollision();
         }
 
+        // fix later
         public void StopToCollision()
         {
             _rb.velocity = Vector2.zero;

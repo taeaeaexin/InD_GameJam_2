@@ -11,7 +11,8 @@ namespace Throws
 
         protected Vector2 ThrowDirection;
         protected float ThrowForce;
-
+        protected bool IsThrown = false;
+        
         private Vector2 _startPosition;
 
         protected virtual void Start()
@@ -30,11 +31,15 @@ namespace Throws
 
         protected virtual void OnMouseButtonDown(Vector2 mousePosition)
         {
+            if (IsThrown) return;
+            
             _startPosition = mousePosition;
         }
 
         protected virtual void OnMouseButtonHold(Vector2 mousePosition)
         {
+            if (IsThrown) return;
+            
             var offset = _startPosition - mousePosition;
 
             ThrowDirection = offset.normalized;
@@ -44,7 +49,7 @@ namespace Throws
 
         protected virtual void OnMouseButtonUp(Vector2 mousePosition)
         {
-            
+            IsThrown = true;
         }
 
         protected GameObject DoSpawn()
