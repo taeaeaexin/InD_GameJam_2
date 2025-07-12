@@ -7,6 +7,8 @@ TagManager:
   - Target
   - Failed
   - Throwable
+  - Firewood
+  - Title_Icon
   layers:
   - Default
   - TransparentFX

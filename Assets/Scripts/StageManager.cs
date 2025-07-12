@@ -5,6 +5,7 @@ using Throwables;
 using Throws;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.SceneManagement;
 
 public class StageManager : MonoBehaviour
 {
@@ -100,5 +101,19 @@ public class StageManager : MonoBehaviour
 
         StageStart();
         print("StageStart");
+    }
+    public void LoadSceneByName(string sceneName)
+    {
+        if (!string.IsNullOrEmpty(sceneName))
+        {
+            SceneManager.LoadScene(sceneName);
+        }
+    }
+
+    // 게임 종료
+    public void QuitGame()
+    {
+        Debug.Log("게임 종료 요청");
+        Application.Quit();
     }
 }
