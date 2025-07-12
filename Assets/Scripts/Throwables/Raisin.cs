@@ -22,7 +22,7 @@ namespace Throwables
                 Rigidbody2D rb = GetComponent<Rigidbody2D>();
                 if (rb != null)
                 {
-                    
+                    rb.isKinematic = true;
                     rb.velocity = Vector2.zero;         // 이동 정지
                     rb.angularVelocity = 0f;            // 회전 정지
                 }
