@@ -1,4 +1,4 @@
-# 🍞 2025 인디inD 게임잼 대전
+# 🌭 Throw It!
 > 인디(inD) 게임잼 대전 2조 빵이조아  
 > 2025.07.11 ~ 07.13
 
@@ -13,8 +13,8 @@
 <br>
 
 ## ⚒️ 스택
-<img width="55" height="55" alt="image" src="https://github.com/user-attachments/assets/4213a520-9f72-4a18-91e4-904ba252ea28" /> &nbsp;
-<img width="55" height="55" alt="image" src="https://github.com/user-attachments/assets/68513a58-fdb4-4d08-a454-2d30d105e8bc" />
+<img width="50" height="50" alt="image" src="https://github.com/user-attachments/assets/4213a520-9f72-4a18-91e4-904ba252ea28" /> &nbsp;
+<img width="50" height="50" alt="image" src="https://github.com/user-attachments/assets/68513a58-fdb4-4d08-a454-2d30d105e8bc" />
 
 
 <br>
