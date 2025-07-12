@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using Throwables;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public class Strawberry : Throwable
+namespace Throwables
 {
-    protected override void Interact()
+    [RequireComponent(typeof(Rigidbody2D))]
+    public class Strawberry : Throwable
     {
-        StopToCollision();
-    }
 
+    }
 }
