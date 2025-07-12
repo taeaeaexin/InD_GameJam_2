@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1113336186348403854}
   - component: {fileID: 344273376662074184}
   m_Layer: 0
-  m_Name: Cake
+  m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
