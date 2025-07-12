@@ -17,6 +17,7 @@ public class Candle_head : MonoBehaviour
 	{
 		if (other.CompareTag("Firewood") && matchFire != null)
 		{
+			if (SoundManager.Instance) SoundManager.Instance.PlaySFX(Resources.Load<AudioClip>("sound/sound_fire_3"));
 			matchFire.enabled = true; // ∫“ ∫Ÿ¿”
 		}
 	}

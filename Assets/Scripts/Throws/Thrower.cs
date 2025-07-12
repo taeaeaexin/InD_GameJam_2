@@ -41,7 +41,7 @@ namespace Throws
         protected virtual void OnMouseButtonDown(Vector2 mousePosition)
         {
             if (IsThrown) return;
-            
+            if (SoundManager.Instance) SoundManager.Instance.PlaySFXWithStop("sound_pluck");
             _startPosition = mousePosition;
         }
 
@@ -59,7 +59,7 @@ namespace Throws
         protected virtual void OnMouseButtonUp(Vector2 mousePosition)
         {
             IsThrown = true;
-            
+            if (SoundManager.Instance) SoundManager.Instance.StopSFX("sound_pluck");
             OnThrow?.Invoke();
         }
 

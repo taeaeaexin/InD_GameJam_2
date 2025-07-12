@@ -25,6 +25,7 @@ namespace Throwables
             ThrowableSprite = GetComponent<SpriteRenderer>();
             Rb = GetComponent<Rigidbody2D>();
             Col = GetComponent<Collider2D>();
+            if (SoundManager.Instance) SoundManager.Instance.Play_R_SFX("sound_throw_", 2);
         }
 
         protected virtual void OnCollisionEnter2D(Collision2D collision)

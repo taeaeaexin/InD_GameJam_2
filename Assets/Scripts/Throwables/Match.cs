@@ -12,6 +12,7 @@ namespace Throwables
 		void Start()
 		{
 			spriteRenderer = GetComponent<SpriteRenderer>();
+			if (SoundManager.Instance) SoundManager.Instance.PlaySFX(Resources.Load<AudioClip>("sound/sound_fire_2"));
 			if (fireObject != null)
 			{
 				fireObject.SetActive(false); // 시작하자마자 비활성화

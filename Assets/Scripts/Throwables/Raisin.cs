@@ -16,7 +16,7 @@ namespace Throwables
 
         protected override void OnCollisionEnter2D(Collision2D collision)
         {
-             SoundManager.Instance.PlaySFX(Resources.Load<AudioClip>("sound/sound_drop_1"));
+            if(SoundManager.Instance) SoundManager.Instance.PlaySFX(Resources.Load<AudioClip>("sound/sound_drop_1"));
             if (collision.collider.CompareTag("Target"))
             {
                 Rigidbody2D rb = GetComponent<Rigidbody2D>();
