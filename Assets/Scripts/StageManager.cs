@@ -20,8 +20,9 @@ public class StageManager : MonoBehaviour
     public Interactable currentInteractable;
     public Interactable cake;
 
-    public int currentStage;
-    public int currentCakeStage;
+    private int _currentStage;
+    private int _currentCakeStage;
+    public int _allStage;
 
     public int MaxStage { get; private set; }
 
@@ -57,7 +58,7 @@ public class StageManager : MonoBehaviour
 
     private bool IsCakeStage()
     {
-        return currentStage % 2 == 0;
+        return _allStage % 2 == 0;
     }
 
     public void StageStart()
@@ -67,12 +68,12 @@ public class StageManager : MonoBehaviour
             cake.gameObject.SetActive(true);
 
             currentInteractable = cake;
-            currentThrower = Instantiate(cakeThrowerList[currentCakeStage]).GetComponent<Thrower>();
+            currentThrower = Instantiate(cakeThrowerList[_currentCakeStage]).GetComponent<Thrower>();
         }
         else
         {
-            currentInteractable = Instantiate(interactableList[currentStage]).GetComponent<Interactable>();
-            currentThrower = Instantiate(throwerList[currentStage]).GetComponent<Thrower>();
+            currentInteractable = Instantiate(interactableList[_currentStage]).GetComponent<Interactable>();
+            currentThrower = Instantiate(throwerList[_currentStage]).GetComponent<Thrower>();
         }
 
         zoom.transform.localPosition = currentInteractable.transform.localPosition + Vector3.back;
@@ -104,14 +105,16 @@ public class StageManager : MonoBehaviour
         {
             cake.gameObject.SetActive(false);
 
-            currentCakeStage++;
+            _currentCakeStage++;
         }
         else
         {
             Destroy(currentInteractable.gameObject);
             
-            currentStage++;
+            _currentStage++;
         }
+
+        _allStage++;
         
         Destroy(currentThrower.gameObject);
     }

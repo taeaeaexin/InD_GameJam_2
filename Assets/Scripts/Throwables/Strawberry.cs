@@ -2,53 +2,35 @@ using UnityEngine;
 
 namespace Throwables
 {
-    [RequireComponent(typeof(Rigidbody2D))]
     public class Strawberry : Throwable
     {
-        private bool isStuck = false;
-        private Vector3 originalScale;
-        private Vector3 offsetFromCream;
-
-        void Start()
-        {
-            originalScale = transform.localScale;
-        }
+        private float _elapsed;
+        private bool _isStop;
 
         protected override void OnCollisionEnter2D(Collision2D collision)
         {
-            if (isStuck) return;
-
             if (collision.collider.CompareTag("Cream"))
             {
-                isStuck = true;
+                StopToCollision();
 
-                Rigidbody2D rb = GetComponent<Rigidbody2D>();
-                rb.velocity = Vector2.zero;
-                rb.bodyType = RigidbodyType2D.Kinematic; // Use Kinematic to follow parent smoothly
-                rb.freezeRotation = true;
+                _isStop = true;
 
-                // Get contact point and attach at exact hit location
-                Vector2 contactPoint = collision.contacts[0].point;
-                Vector3 stickPos = new Vector3(contactPoint.x, contactPoint.y, transform.position.z);
-                transform.position = stickPos;
-
-                // Instead of parenting, follow the cream with a fixed offset
-                offsetFromCream = transform.position - collision.collider.transform.position;
-                StartCoroutine(FollowCream(collision.collider.transform));
-
-                GetComponent<Collider2D>().enabled = false;
-
-                Debug.Log("🍓");
+                _elapsed = 0f;
             }
         }
 
-        private System.Collections.IEnumerator FollowCream(Transform cream)
+        private void OnCollisionStay2D(Collision2D other)
         {
-            while (true)
-            {
-                transform.position = cream.position + offsetFromCream;
-                yield return null;
-            }
+            if (!_isStop) return;
+
+            _elapsed += Time.fixedDeltaTime;
+
+            if (!(_elapsed >= 2f)) return;
+
+            if (other.collider.CompareTag("Cream")) StageManager.Instance.StageClear();
+            else StageManager.Instance.StageFailed();
+
+            _isStop = false;
         }
     }
 }

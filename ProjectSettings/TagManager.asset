@@ -7,8 +7,9 @@ TagManager:
   - Target
   - Failed
   - Throwable
+  - Cake
   - Firewood
-  - Title_Icon
+  - Cream
   layers:
   - Default
   - TransparentFX

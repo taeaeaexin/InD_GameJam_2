@@ -19,19 +19,29 @@ namespace Interactables
         
         private bool isRestarted = false;
 
-        private void Start()
+        protected override void Awake()
         {
-            StageManager.Instance.OnStageStart += OnRestarted;
+            base.Awake();
+
+            OnNextStage();
             
+            StageManager.Instance.OnStageStart += OnRestarted;
+            StageManager.Instance.OnNextStage += OnNextStage;
+        }
+
+        private void OnNextStage()
+        {
             createdCreamCount = 0;
             _interactedCount = 0;
-            
-            StageManager.Instance.currentThrower.OnThrow += StartRoutine;
         }
 
         private void OnRestarted()
         {
+            if (!gameObject.activeSelf) return;
+            
             isRestarted = true;
+            
+            StageManager.Instance.currentThrower.OnThrow += StartRoutine;
         }
 
         public void Clear()
@@ -39,7 +49,7 @@ namespace Interactables
             if (!isRestarted) return;
             foreach (Transform t in spriteParent.transform)
             {
-                if (createdCreamCount-- == 0) return;
+                if (createdCreamCount-- <= 0) return;
                 
                 Destroy(t.gameObject);
             }
@@ -51,12 +61,16 @@ namespace Interactables
 
         void StartRoutine()
         {
+            if (!gameObject.activeSelf) return;
+            
             StartCoroutine(CheckGameClear());
+            
+            StageManager.Instance.currentThrower.OnThrow -= StartRoutine;
         }
         
         IEnumerator CheckGameClear()
         {
-            yield return new WaitForSeconds(7f);
+            yield return new WaitForSeconds(5f);
 
             if (_interactedCount > 5)
             {
