@@ -44,12 +44,14 @@ namespace Interactables
         {
             if (!other.CompareTag("Throwable")) return;
 
-            _elapsed = 0f; // 타이머 초기화
-            _hasEntered = true; // 동작 실행 플래그 리셋
+            _elapsed = 0f;
+            _hasEntered = true;
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
+            if (!other.CompareTag("Throwable")) return;
+            
             if (!_hasEntered) return;
             
             _elapsed = 0f;
@@ -60,18 +62,19 @@ namespace Interactables
         {
             if (!_hasEntered) return;
             if (!other.CompareTag("Throwable")) return;
-            if (other.GetComponent<Rigidbody2D>().velocity.magnitude > 2f)
+            if (other.GetComponent<Rigidbody2D>().velocity.magnitude > 3f)
             {
                 _elapsed = 0f;
                 return;
             }
             
             _elapsed += Time.fixedDeltaTime;
-
+            
             if (!(_elapsed >= targetTime)) return;
 
-            _hasEntered = false;
             StageManager.Instance.StageClear();
+            
+            _hasEntered = false;
         }
 
         private void StartShake()

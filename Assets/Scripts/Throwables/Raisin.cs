@@ -17,15 +17,14 @@ namespace Throwables
         protected override void OnCollisionEnter2D(Collision2D collision)
         {
             if(SoundManager.Instance) SoundManager.Instance.PlaySFX(Resources.Load<AudioClip>("sound/sound_drop_1"));
+            if (collision.collider.CompareTag("Failed"))
+            {
+                Destroy(this);
+                return;
+            }
             if (collision.collider.CompareTag("Target"))
             {
-                Rigidbody2D rb = GetComponent<Rigidbody2D>();
-                if (rb != null)
-                {
-                    rb.isKinematic = true;
-                    rb.velocity = Vector2.zero;         // 이동 정지
-                    rb.angularVelocity = 0f;            // 회전 정지
-                }
+                StopToCollision();
             }
         }
     }

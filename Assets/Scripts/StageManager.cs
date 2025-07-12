@@ -4,6 +4,7 @@ using Interactables;
 using Throws;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class StageManager : MonoBehaviour
 {
@@ -21,8 +22,9 @@ public class StageManager : MonoBehaviour
     public Interactable cake;
 
     private int _currentStage;
-    private int _currentCakeStage;
-    public int _allStage;
+    
+    public int currentCakeStage;
+    public int allStage;
 
     public int MaxStage { get; private set; }
 
@@ -58,22 +60,26 @@ public class StageManager : MonoBehaviour
 
     private bool IsCakeStage()
     {
-        return _allStage % 2 == 0;
+        return allStage % 2 == 0;
     }
 
     public void StageStart()
     {
-        if (IsCakeStage())
+        if (IsCakeStage() && currentCakeStage < cakeThrowerList.Count)
         {
             cake.gameObject.SetActive(true);
 
             currentInteractable = cake;
-            currentThrower = Instantiate(cakeThrowerList[_currentCakeStage]).GetComponent<Thrower>();
+            currentThrower = Instantiate(cakeThrowerList[currentCakeStage]).GetComponent<Thrower>();
         }
-        else
+        else if(_currentStage < cakeThrowerList.Count)
         {
             currentInteractable = Instantiate(interactableList[_currentStage]).GetComponent<Interactable>();
             currentThrower = Instantiate(throwerList[_currentStage]).GetComponent<Thrower>();
+        }
+        else
+        {
+            UIManager.Instance.ShowAllClearUI();
         }
 
         zoom.transform.localPosition = currentInteractable.transform.localPosition + Vector3.back;
@@ -105,7 +111,7 @@ public class StageManager : MonoBehaviour
         {
             cake.gameObject.SetActive(false);
 
-            _currentCakeStage++;
+            currentCakeStage++;
         }
         else
         {
@@ -114,7 +120,7 @@ public class StageManager : MonoBehaviour
             _currentStage++;
         }
 
-        _allStage++;
+        allStage++;
         
         Destroy(currentThrower.gameObject);
     }
@@ -128,7 +134,7 @@ public class StageManager : MonoBehaviour
 
     public void StageClear()
     {
-        if (SoundManager.Instance) SoundManager.Instance.Play_R_SFX("sound_cheer_", 4);
+        if (SoundManager.Instance) SoundManager.Instance.Play_R_SFX("sound_throw_", 4);
         
         OnStageClear?.Invoke();
     }

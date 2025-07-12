@@ -1,25 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
-using System;
+using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI currentStageText;
     public GameObject clearUI;
-    public GameObject AllClearUI;
+    public GameObject allClearUI;
+    public GameObject statusUI;
 
-    [Header("Guide UI")]
-    public GameObject GuideUI;
-    private GameObject guideUIInstance;
-    
+    [Header("Guide UI")] public GameObject guideUI;
+
     [SerializeField] private float idleThreshold = 5f;
-    private float idleTimer = 0f;
-    private bool inputDetected = false;
+    private GameObject _guideUIInstance;
+    private float _idleTimer;
+    private bool _inputDetected;
     public static UIManager Instance { get; private set; }
 
-    void Awake()
+    private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
@@ -40,21 +37,18 @@ public class UIManager : MonoBehaviour
         InputSystem.Instance.OnMouseButtonUp += OnMouseButtonUp;
 
         OnStageStart();
-        guideUIInstance = Instantiate(GuideUI);
+        _guideUIInstance = Instantiate(guideUI);
     }
-
-
+    
     private void Update()
     {
-        inputDetected = false;
+        _inputDetected = false;
 
-        idleTimer += Time.deltaTime;
+        _idleTimer += Time.deltaTime;
 
-        if (idleTimer >= idleThreshold)
-        {
-            guideUIInstance?.SetActive(true);
-        }
+        if (_idleTimer >= idleThreshold) _guideUIInstance?.SetActive(true);
     }
+
     private void OnDestroy()
     {
         StageManager.Instance.OnStageStart -= OnStageStart;
@@ -67,22 +61,20 @@ public class UIManager : MonoBehaviour
         InputSystem.Instance.OnMouseButtonHold -= OnMouseButtonHold;
         InputSystem.Instance.OnMouseButtonUp -= OnMouseButtonUp;
     }
-
-
+    
     public void OnStageStart()
     {
-        currentStageText.text = $"STAGE : {(StageManager.Instance._allStage + 1).ToString()}";
+        currentStageText.text = $"STAGE : {(StageManager.Instance.allStage + 1).ToString()}";
     }
 
     public void OnStageEnd()
     {
-        if (StageManager.Instance.MaxStage <= StageManager.Instance._allStage)
-            AllClearUI.SetActive(true);
+        if (StageManager.Instance.MaxStage <= StageManager.Instance.allStage)
+            allClearUI.SetActive(true);
     }
 
     public void OnStageFailed()
     {
-
     }
 
     public void OnStagaClear()
@@ -105,24 +97,34 @@ public class UIManager : MonoBehaviour
         clearUI.SetActive(false);
     }
 
+    public void ShowAllClearUI()
+    {
+        allClearUI.SetActive(true);
+    }
+    
+    public void HideAllClearUI()
+    {
+        allClearUI.SetActive(false);
+    }
+
     public void OnMouseButtonDown(Vector2 mousePos)
     {
-        inputDetected = true;
-        idleTimer = 0f;
-        guideUIInstance?.SetActive(false);
+        _inputDetected = true;
+        _idleTimer = 0f;
+        _guideUIInstance?.SetActive(false);
     }
 
     private void OnMouseButtonHold(Vector2 vector)
     {
-        inputDetected = true;
-        idleTimer = 0f;
-        guideUIInstance?.SetActive(false);
+        _inputDetected = true;
+        _idleTimer = 0f;
+        _guideUIInstance?.SetActive(false);
     }
 
     private void OnMouseButtonUp(Vector2 vector)
     {
-        inputDetected = true;
-        idleTimer = 0f;
-        guideUIInstance?.SetActive(false);
+        _inputDetected = true;
+        _idleTimer = 0f;
+        _guideUIInstance?.SetActive(false);
     }
 }

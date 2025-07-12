@@ -10,6 +10,7 @@ TagManager:
   - Cake
   - Firewood
   - Cream
+  - DelayFail
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,4 @@
-using System.Collections;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Interactables
 {
@@ -10,9 +8,21 @@ namespace Interactables
 
         private float _elapsed;
 
-        private bool _hasEntered = false;
+        private bool _hasEntered;
 
         private bool _isClear;
+
+        private void FixedUpdate()
+        {
+            if (_hasEntered && !_isClear)
+            {
+                _elapsed += Time.fixedDeltaTime;
+
+                if (!(_elapsed >= targetTime)) return;
+                StageManager.Instance.StageClear();
+                _isClear = true;
+            }
+        }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -30,18 +40,5 @@ namespace Interactables
             _elapsed = 0f;
             _hasEntered = false;
         }
-
-        private void FixedUpdate()
-        {
-            if (_hasEntered && !_isClear)
-            {
-                _elapsed += Time.fixedDeltaTime;
-
-                if (!(_elapsed >= targetTime)) return;
-                StageManager.Instance.StageClear();
-                _isClear = true;
-            }
-        }
-        
     }
 }

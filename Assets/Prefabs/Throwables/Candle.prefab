@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4264703598550266278}
   - component: {fileID: 468165197751387071}
   - component: {fileID: 1542713446007616702}
-  - component: {fileID: 8553246642373840712}
+  - component: {fileID: 1720109265578184369}
   m_Layer: 0
   m_Name: Candle
   m_TagString: Untagged
@@ -160,7 +160,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8553246642373840712
+--- !u!114 &1720109265578184369
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,15 +169,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1639615766933668811}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e58b6f2652045e1966796177d265ac9, type: 3}
+  m_Script: {fileID: 11500000, guid: a19bad9f59f414d4b9b46acdbeb398ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   restitution: 1
-  sprites:
-  - {fileID: 1121743945, guid: 1ecece0e2ed451e42ad4b83af80bba18, type: 3}
-  - {fileID: 23323131, guid: 1ecece0e2ed451e42ad4b83af80bba18, type: 3}
-  - {fileID: 712331938, guid: 1ecece0e2ed451e42ad4b83af80bba18, type: 3}
-  - {fileID: 1748219978, guid: 1ecece0e2ed451e42ad4b83af80bba18, type: 3}
 --- !u!1001 &5519086434446305777
 PrefabInstance:
   m_ObjectHideFlags: 0

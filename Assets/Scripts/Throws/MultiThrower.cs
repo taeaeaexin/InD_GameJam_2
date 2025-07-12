@@ -47,9 +47,9 @@ namespace Throws
             {
                 Spawn();
 
-                var throwable = CurrentThrowable.GetComponent<Throwable>();
+                var throwable = currentThrowable.GetComponent<Throwable>();
                 
-                throwable.Throw(ThrowDirection, ThrowForce, 20f);
+                throwable.Throw(ThrowDirection, ThrowForce, 40f);
 
                 yield return _wait;
             }

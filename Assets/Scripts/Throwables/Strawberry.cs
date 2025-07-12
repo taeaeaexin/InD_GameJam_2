@@ -1,3 +1,4 @@
+using Interactables;
 using UnityEngine;
 
 namespace Throwables
@@ -16,6 +17,10 @@ namespace Throwables
                 _isStop = true;
 
                 _elapsed = 0f;
+                
+                transform.parent = collision.transform;
+
+                StageManager.Instance.currentThrower.currentThrowable = null;
             }
         }
 

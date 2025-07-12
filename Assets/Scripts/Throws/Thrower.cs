@@ -1,4 +1,5 @@
 using System;
+using Throwables;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -17,8 +18,7 @@ namespace Throws
         
         private Vector2 _startPosition;
 
-        protected GameObject CurrentThrowable;
-
+        public GameObject currentThrowable;
         
         public event Action OnThrow;
         
@@ -35,7 +35,7 @@ namespace Throws
             InputSystem.Instance.OnMouseButtonHold -= OnMouseButtonHold;
             InputSystem.Instance.OnMouseButtonUp -= OnMouseButtonUp;
 
-            Destroy(CurrentThrowable);
+            if(currentThrowable) Destroy(currentThrowable);
         }
 
         protected virtual void OnMouseButtonDown(Vector2 mousePosition)
@@ -66,7 +66,7 @@ namespace Throws
 
         protected void Spawn()
         {
-            CurrentThrowable = Instantiate(throwablePrefab, throwPoint.position, Quaternion.identity);
+            currentThrowable = Instantiate(throwablePrefab, throwPoint.position, Quaternion.identity);
         }
     }
 }
