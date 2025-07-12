@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 59727e7857e244664b8f49302dcbd544
+guid: 968cf6647787bf34994dc64408228d94
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: berry_strip2_0
+      name: "\uD584\uBC84\uAC70_strip6_0"
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 80
-        height: 80
+        width: 160
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2a45e4bf08824398ba8ea93ebe659d0
-      internalID: -108446499
+      spriteID: 84b873e081e95ea4cab844800481e6f0
+      internalID: -1932700180
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: berry_strip2_1
+      name: "\uD584\uBC84\uAC70_strip6_1"
       rect:
         serializedVersion: 2
-        x: 80
+        x: 160
         y: 0
-        width: 80
-        height: 80
+        width: 160
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,8 +132,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af8ff97450a464698bdec8d80507cd9f
-      internalID: 1538650887
+      spriteID: 9753c5ba959987847996b70026b4c542
+      internalID: -46868355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uD584\uBC84\uAC70_strip6_2"
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 160
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77e98eb5a1da97d49a4e1d12a36d918a
+      internalID: 1315216606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uD584\uBC84\uAC70_strip6_3"
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 160
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2eb9e376b707d594a8f0952051f770f7
+      internalID: -271166258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uD584\uBC84\uAC70_strip6_4"
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 160
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17f533e3ecd31b94389b9a15eb872195
+      internalID: -1805871878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uD584\uBC84\uAC70_strip6_5"
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 160
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05ae6fac37d777849991673c5ef0c05e
+      internalID: 524835939
       vertices: []
       indices: 
       edges: []
@@ -149,8 +233,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      berry_strip2_0: -108446499
-      berry_strip2_1: 1538650887
+      "\uD584\uBC84\uAC70_strip6_0": -1932700180
+      "\uD584\uBC84\uAC70_strip6_1": -46868355
+      "\uD584\uBC84\uAC70_strip6_2": 1315216606
+      "\uD584\uBC84\uAC70_strip6_3": -271166258
+      "\uD584\uBC84\uAC70_strip6_4": -1805871878
+      "\uD584\uBC84\uAC70_strip6_5": 524835939
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
