@@ -73,14 +73,10 @@ public class StageManager : MonoBehaviour
             currentInteractable = cake;
             currentThrower = Instantiate(cakeThrowerList[currentCakeStage]).GetComponent<Thrower>();
         }
-        else if(_currentStage < cakeThrowerList.Count)
+        else
         {
             currentInteractable = Instantiate(interactableList[_currentStage]).GetComponent<Interactable>();
             currentThrower = Instantiate(throwerList[_currentStage]).GetComponent<Thrower>();
-        }
-        else
-        {
-            UIManager.Instance.ShowAllClearUI();
         }
 
         zoom.transform.localPosition = currentInteractable.transform.localPosition + Vector3.back;
