@@ -14,6 +14,22 @@ namespace Throwables
             ThrowableSprite.sprite = sprites[Random.Range(0, sprites.Length)];
         }
 
+        protected override void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (!collision.collider.CompareTag("Target"))
+            {
+                Interact();
+                
+                return;
+            }
+            
+            var interactable = collision.collider.GetComponent<Interactable>();
+            
+            interactable.Interact(collision);
+            
+            Interact();
+        }
+        
         protected override void Interact()
         {
             Destroy(gameObject);

@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Throws
 {
@@ -17,6 +19,9 @@ namespace Throws
 
         protected GameObject CurrentThrowable;
 
+        
+        public event Action OnThrow;
+        
         protected virtual void Start()
         {
             InputSystem.Instance.OnMouseButtonDown += OnMouseButtonDown;
@@ -54,6 +59,8 @@ namespace Throws
         protected virtual void OnMouseButtonUp(Vector2 mousePosition)
         {
             IsThrown = true;
+            
+            OnThrow?.Invoke();
         }
 
         protected void Spawn()

@@ -58,6 +58,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045fa1c571ba44782bb4de4c4a885f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  throwerList: []
+  interactableList: []
+  failedZone: {fileID: 8093213293340892792, guid: 347202326ab9f1f4dbaa0859a2df8bd9, type: 3}
+  zoom: {fileID: 0}
+  currentThrower: {fileID: 0}
+  currentInteractable: {fileID: 0}
+  currentStage: 0
+  maxStage: 3
 --- !u!114 &6800988602106635075
 MonoBehaviour:
   m_ObjectHideFlags: 0

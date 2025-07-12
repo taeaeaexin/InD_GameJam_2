@@ -1,5 +1,8 @@
+using System;
+using System.Collections;
 using Interactables;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Throwables
 {
@@ -16,7 +19,7 @@ namespace Throwables
         private Rigidbody2D _rb;
         private bool _isThrown;
         private bool _isTorque;
-
+        
         protected virtual void Awake()
         {
             ThrowableSprite = GetComponent<SpriteRenderer>();

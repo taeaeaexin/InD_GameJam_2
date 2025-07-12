@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,20 +12,42 @@ namespace Interactables
         [SerializeField] private Transform spriteParent;
         [SerializeField] private Sprite[] paintedCakeImages;
 
-        private Camera _cam;
+        public int _interactedCount = 0;
 
         private void Start()
         {
-            _cam = Camera.main;
+            StageManager.Instance.currentThrower.OnThrow += StartRoutine;
+        }
+
+        void StartRoutine()
+        {
+            StartCoroutine(CheckGameClear());
+            
+            StageManager.Instance.currentThrower.OnThrow -= StartRoutine;
+        }
+        
+        IEnumerator CheckGameClear()
+        {
+            yield return new WaitForSeconds(10f);
+
+            if (_interactedCount > 5)
+            {
+                StageManager.Instance.StageClear();
+            }
+            else
+            {
+                StageManager.Instance.StageFailed();
+            }
+            
         }
 
         public override void Interact(Collision2D collision)
         {
-            if (collision == null) return;
-
             var contactPoint = collision.GetContact(0).point;
             
             SpawnCream(contactPoint);
+
+            _interactedCount++;
         }
 
         private bool CheckRoI(Vector2 contactPoint)
@@ -31,6 +56,7 @@ namespace Interactables
             
             return !(contactPoint.x < boi.min.x) && !(contactPoint.x > boi.max.x);
         }
+        
         private void SpawnCream(Vector2 contactPoint)
         {
             var main = Instantiate(spritePrefab,contactPoint, Quaternion.identity, spriteParent).GetComponent<SpriteRenderer>();

@@ -10,6 +10,7 @@ public class StageManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> throwerList;
     [SerializeField] private List<GameObject> interactableList;
+    [SerializeField] private GameObject failedZone;
     [SerializeField] Camera zoom;
     public static StageManager Instance;
 
@@ -49,6 +50,8 @@ public class StageManager : MonoBehaviour
 
         zoom.transform.localPosition = currentInteractable.transform.localPosition + Vector3.back;
         
+        // failedZone.SetActive(!currentInteractable.CompareTag("Cake"));
+        
         OnStageStart?.Invoke();
     }
 
@@ -66,6 +69,7 @@ public class StageManager : MonoBehaviour
         {
             currentStage++;
         }
+        
         OnStageEnd?.Invoke();
 
         Destroy(currentThrower.gameObject);
