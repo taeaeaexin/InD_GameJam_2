@@ -86,7 +86,7 @@ public class StageManager : MonoBehaviour
 
     public void StageClear()
     {
-        if (SoundManager.Instance) SoundManager.Instance.Play_R_SFX("sound_throw_", 4);
+        if (SoundManager.Instance) SoundManager.Instance.Play_R_SFX("sound_cheer_", 4);
         print("Stage Clear");
         OnStageClear?.Invoke();
     }

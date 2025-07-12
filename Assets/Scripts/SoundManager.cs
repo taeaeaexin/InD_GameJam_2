@@ -93,20 +93,26 @@ public class SoundManager : MonoBehaviour
     {
         if (activeSFX.TryGetValue(clipName, out AudioSource source))
         {
-            source.Stop();
-            Destroy(source);
+            if (source != null)
+            {
+                source.Stop();
+                // 여기선 Destroy 하지 않음
+            }
+
             activeSFX.Remove(clipName);
         }
     }
+
     private IEnumerator RemoveWhenDone(string clipName, AudioSource source)
     {
-        yield return new WaitUntil(() => !source.isPlaying);
-        if (activeSFX.ContainsKey(clipName))
+        yield return new WaitUntil(() => source == null || !source.isPlaying);
+
+        if (source != null)
         {
-            activeSFX.Remove(clipName);
+            Destroy(source);
         }
-        Destroy(source);
     }
+
 
 
 }

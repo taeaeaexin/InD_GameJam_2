@@ -58,8 +58,10 @@ namespace Throws
 
         protected virtual void OnMouseButtonUp(Vector2 mousePosition)
         {
+            print("¶§±â");
             IsThrown = true;
             if (SoundManager.Instance) SoundManager.Instance.StopSFX("sound_pluck");
+            if (SoundManager.Instance) SoundManager.Instance.Play_R_SFX("sound_throw_", 2);
             OnThrow?.Invoke();
         }
 

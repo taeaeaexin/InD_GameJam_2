@@ -31,6 +31,7 @@ namespace Throws
 
         protected override void OnMouseButtonUp(Vector2 mousePosition)
         {
+            base.OnMouseButtonUp(mousePosition);
             _throwableRb.isKinematic = false;
             _throwable.Throw(ThrowDirection, ThrowForce);
         }
