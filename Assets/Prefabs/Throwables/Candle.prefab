@@ -190,6 +190,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Candle_h_t
       objectReference: {fileID: 0}
+    - target: {fileID: 5645756050858105837, guid: 37fc3b4d05ba40a49891f5cf629cd19a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5872835404680433543, guid: 37fc3b4d05ba40a49891f5cf629cd19a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
