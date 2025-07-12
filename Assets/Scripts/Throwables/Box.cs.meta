@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scripts/CakeThrower.cs.meta
-guid: 045fa1c571ba44782bb4de4c4a885f7d
-========
-guid: 4ae680bd250f67d4ca5212d41d841ade
->>>>>>>> origin/main:Assets/Scripts/StageManager.cs.meta
+guid: f5db526d14c9f43e681777fcf09988e4
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
