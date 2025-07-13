@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 7112834364723012477}
   - component: {fileID: 6576579061310702947}
   - component: {fileID: 740362689266552455}
-  - component: {fileID: 6442811180809901389}
   - component: {fileID: 7437912663666067224}
+  - component: {fileID: 2808158232908284867}
   m_Layer: 0
   m_Name: Takoyaki
-  m_TagString: Untagged
+  m_TagString: Throwable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,10 +111,25 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &6442811180809901389
+--- !u!114 &7437912663666067224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2744200227779773046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19cafdb7370b86c448f7156f06f53ccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restitution: 1
+  _elapsed: 0
+  _isStop: 0
+--- !u!58 &2808158232908284867
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,16 +163,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.1}
   serializedVersion: 2
-  m_Radius: 0.35
---- !u!114 &7437912663666067224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2744200227779773046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19cafdb7370b86c448f7156f06f53ccb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Radius: 0.4

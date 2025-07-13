@@ -4,24 +4,45 @@ namespace Throwables
 {
 	public class Takoyaki : Throwable
 	{
-		protected override void OnCollisionEnter2D(Collision2D collision)
+		public float _elapsed;
+		public bool _isStop;
+
+		protected override void OnTriggerEnter2D(Collider2D other)
 		{
-			// »ç¿îµå Àç»ý
-			if (SoundManager.Instance)
-				SoundManager.Instance.PlaySFX(Resources.Load<AudioClip>("sound/sound_drop_1"));
-
-			if (collision.collider.CompareTag("Target"))
+			if (other.CompareTag("Failed"))
 			{
-				Rigidbody2D rb = GetComponent<Rigidbody2D>();
-				if (rb != null)
-				{
-
-					// ¹°¸® ¸ØÃã
-					rb.velocity = Vector2.zero;
-					rb.angularVelocity = 0f;
-					rb.isKinematic = true;
-				}
+				StageManager.Instance.StageFailed();
+				return;
 			}
+
+			if (other.CompareTag("Target"))
+			{
+				if (SoundManager.Instance)
+					SoundManager.Instance.PlaySFX(Resources.Load<AudioClip>("sound/sound_drop_1"));
+
+				_elapsed += Time.deltaTime;
+
+				if (!(_elapsed >= 0.01f)) return;
+
+				StopToCollision();
+				((CircleCollider2D) Col).radius = 1f;
+				_isStop = true;
+				_elapsed = 0f;
+			}
+		}
+
+		void OnTriggerStay2D(Collider2D other)
+		{
+			if (!_isStop) return;
+
+			_elapsed += Time.fixedDeltaTime;
+
+			if (!(_elapsed >= 2f)) return;
+
+			if (other.CompareTag("Target")) StageManager.Instance.StageClear();
+			else StageManager.Instance.StageFailed();
+
+			_isStop = false;
 		}
 	}
 }

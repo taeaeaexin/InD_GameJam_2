@@ -44,11 +44,11 @@ namespace Throwables
             Bound(collision.contacts[0].normal);
         }
 
-        protected virtual void OnTriggerEnter2D(Collider2D collision)
+        protected virtual void OnTriggerEnter2D(Collider2D other)
         {
-            if (!collision.CompareTag("Target")) return;
+            if (!other.CompareTag("Target")) return;
 
-            var interactable = collision.GetComponent<Interactable>();
+            var interactable = other.GetComponent<Interactable>();
 
             interactable.Interact(null);
             
@@ -91,8 +91,8 @@ namespace Throwables
         {
             Rb.velocity = Vector2.zero;
             Rb.angularVelocity = 0f;
-            Rb.gravityScale = 0f;
-            Col.enabled = false;
+            
+            Rb.constraints = RigidbodyConstraints2D.FreezePosition;
         }
 
         public void Bound(Vector2 normal)

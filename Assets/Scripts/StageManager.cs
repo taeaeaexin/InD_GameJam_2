@@ -25,6 +25,7 @@ public class StageManager : MonoBehaviour
     
     public int currentCakeStage;
     public int allStage;
+    private Camera _cam;
 
     public int MaxStage { get; private set; }
 
@@ -43,6 +44,7 @@ public class StageManager : MonoBehaviour
 
     private void Start()
     {
+        _cam = Camera.main;
         MaxStage = cakeThrowerList.Count + throwerList.Count;
         
         cake = Instantiate(cakePrefabs).GetComponent<Interactable>();
@@ -60,28 +62,26 @@ public class StageManager : MonoBehaviour
 
     private bool IsCakeStage()
     {
-        return allStage % 2 == 0;
+        return allStage % 2 == 1;
     }
 
     public void StageStart()
     {
         SetRandomCameraBackgroundColor();
-        // 1. All Clear 처리 먼저 검사
-        if (_currentStage >= cakeThrowerList.Count)
+        
+        if (_currentStage >= MaxStage)
         {
             UIManager.Instance.ShowAllClearUI();
             return;
         }
-
-        // 2. 케이크 스테이지일 경우
+        
         if (IsCakeStage() && currentCakeStage < cakeThrowerList.Count)
         {
             cake.gameObject.SetActive(true);
             currentInteractable = cake;
             currentThrower = Instantiate(cakeThrowerList[currentCakeStage]).GetComponent<Thrower>();
         }
-        // 3. 일반 스테이지일 경우
-        else
+        else if (_currentStage < throwerList.Count)
         {
             currentInteractable = Instantiate(interactableList[_currentStage]).GetComponent<Interactable>();
             currentThrower = Instantiate(throwerList[_currentStage]).GetComponent<Thrower>();
@@ -154,14 +154,11 @@ public class StageManager : MonoBehaviour
     }
     public void SetRandomCameraBackgroundColor()
     {
-        Camera cam = Camera.main;
-        if (cam == null) return;
+        var r = UnityEngine.Random.Range(100, 151) / 255f;
+        var g = UnityEngine.Random.Range(100, 151) / 255f;
+        var b = UnityEngine.Random.Range(100, 151) / 255f;
 
-        float r = UnityEngine.Random.Range(100, 151) / 255f;
-        float g = UnityEngine.Random.Range(100, 151) / 255f;
-        float b = UnityEngine.Random.Range(100, 151) / 255f;
-
-        cam.backgroundColor = new Color(r, g, b);
+        _cam.backgroundColor = new Color(r, g, b);
     }
 
 }

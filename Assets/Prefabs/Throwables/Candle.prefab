@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4264703598550266278}
   - component: {fileID: 468165197751387071}
   - component: {fileID: 1542713446007616702}
-  - component: {fileID: 374044410410962639}
+  - component: {fileID: -5281726927718548172}
   m_Layer: 0
   m_Name: Candle
   m_TagString: Untagged
@@ -160,7 +160,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &374044410410962639
+--- !u!114 &-5281726927718548172
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1639615766933668811}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f076216368c11a428b1ab15f2f7ad0e, type: 3}
+  m_Script: {fileID: 11500000, guid: a19bad9f59f414d4b9b46acdbeb398ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   restitution: 1
@@ -187,6 +187,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5645756050858105837, guid: 37fc3b4d05ba40a49891f5cf629cd19a, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645756050858105837, guid: 37fc3b4d05ba40a49891f5cf629cd19a, type: 3}
+      propertyPath: changeInterval
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645756050858105837, guid: 37fc3b4d05ba40a49891f5cf629cd19a, type: 3}
+      propertyPath: fireSprites.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5872835404680433543, guid: 37fc3b4d05ba40a49891f5cf629cd19a, type: 3}
