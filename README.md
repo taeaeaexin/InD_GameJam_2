@@ -4,6 +4,12 @@
 
 <br>
 
+<div align = "center">
+  <img width="963" height="561" alt="image" src="https://github.com/user-attachments/assets/ff29d8f0-2365-4674-82d9-59103c488d8a" />
+</div>
+
+<br>
+
 ## 📄 설명
 디자이너 1명, 개발자 3명으로 총 4명이 한 팀으로, "빵"이라는 개발 주제로 무박 3일간 진행한 프로젝트입니다.  
 <br>
