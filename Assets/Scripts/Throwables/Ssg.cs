@@ -10,7 +10,7 @@ namespace Throwables
 
         private void Start()
         {
-            Camera.main.orthographicSize = 3f;
+            Camera.main.orthographicSize = 4f;
         }
         
         protected override void Interact()

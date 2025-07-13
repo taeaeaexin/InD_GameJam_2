@@ -1,4 +1,7 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LineDrawer : MonoBehaviour
 {
@@ -8,15 +11,33 @@ public class LineDrawer : MonoBehaviour
 
     private void Awake()
     {
+        
         _line = GetComponent<LineRenderer>();
+        
         _line.positionCount = 2;
         _line.enabled = false;
         
         _cam = Camera.main;
+        
+        DontDestroyOnLoad(this);
     }
 
+    private void SceneManagerOnsceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        _cam = Camera.main;
+        _line = GetComponent<LineRenderer>();
+        _line.positionCount = 2;
+        _line.enabled = false;
+    }
+    
     private void Start()
     {
+        SceneManager.sceneLoaded += (arg0, mode) =>
+        {
+            _cam = Camera.main;
+            _line = GetComponent<LineRenderer>();
+        };
+        
         _line.startWidth = lineWidth;
         _line.endWidth = lineWidth;
         

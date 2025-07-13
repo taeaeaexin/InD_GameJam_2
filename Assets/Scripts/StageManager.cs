@@ -34,7 +34,6 @@ public class StageManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -62,14 +61,14 @@ public class StageManager : MonoBehaviour
 
     private bool IsCakeStage()
     {
-        return allStage % 2 == 1;
+        return allStage % 2 == 0;
     }
 
     public void StageStart()
     {
         SetRandomCameraBackgroundColor();
         
-        if (_currentStage >= MaxStage)
+        if (allStage >= MaxStage)
         {
             UIManager.Instance.ShowAllClearUI();
             return;
@@ -94,7 +93,7 @@ public class StageManager : MonoBehaviour
 
     public void StageRestart()
     {
-        if (IsCakeStage())
+        if (IsCakeStage() && currentCakeStage < cakeThrowerList.Count)
         {
             Destroy(currentThrower.gameObject);
             ((Cake)cake).Clear();
