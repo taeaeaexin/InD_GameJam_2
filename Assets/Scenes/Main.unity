@@ -695,12 +695,14 @@ MonoBehaviour:
   - {fileID: 8747014165038460378, guid: ce23f6da52e66564badcc74b3c295a75, type: 3}
   - {fileID: 7294802180126058242, guid: f211f3cd3c5d39340b96f76b33ebcca2, type: 3}
   throwerList:
-  - {fileID: 3984104663968010464, guid: 69aa5d6cf361e7c4eab41272365b2f43, type: 3}
+  - {fileID: 5161060599342642045, guid: 8b3302211fb16e8409a4f647d68d9001, type: 3}
   - {fileID: 3984104663968010464, guid: ea465539ae6be7d45962e4b485ee6942, type: 3}
+  - {fileID: 3984104663968010464, guid: 69aa5d6cf361e7c4eab41272365b2f43, type: 3}
   - {fileID: 1382378500015431376, guid: ebc054640cb7fb44c88065ca3365ba3a, type: 3}
   interactableList:
-  - {fileID: 6465411071029905211, guid: c11507ae347aaf142a28bd6b070606de, type: 3}
+  - {fileID: 2064289877707444773, guid: f18f40a8dcec1de4f8a9e12f8be12783, type: 3}
   - {fileID: 3602769278895257470, guid: f075aa3417167a646b8c73a21f4b1633, type: 3}
+  - {fileID: 6465411071029905211, guid: c11507ae347aaf142a28bd6b070606de, type: 3}
   - {fileID: 4065439710204047336, guid: adefe89679aaae04195e4e34bb7e6557, type: 3}
   failedZone: {fileID: 1338773309}
   zoom: {fileID: 1591084232}

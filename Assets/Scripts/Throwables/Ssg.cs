@@ -7,10 +7,11 @@ namespace Throwables
     public class Ssg : Throwable
     {
         private float _elapsed;
-
+        private bool _isEnter;
+        
         private void Start()
         {
-            Camera.main.orthographicSize = 3f;
+            Camera.main.orthographicSize = 4f;
         }
         
         protected override void Interact()

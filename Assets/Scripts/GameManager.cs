@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,9 +19,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+    }
+
     public void LoadScene(string name)
     {
-        SceneManager.LoadScene(name);
+        SceneManager.LoadScene(name, LoadSceneMode.Single);
     }
 
     public void QuitGame()
