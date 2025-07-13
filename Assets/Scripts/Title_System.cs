@@ -1,8 +1,17 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Title_System : MonoBehaviour
 {
-	// 씬 이름을 받아서 해당 씬으로 이동
+	public GameObject hand;
 
+    private void Start()
+    {
+        re_obj();
+    }
+
+    public void re_obj()
+    {
+        Destroy(hand);
+		Instantiate(hand);
+    }
 }
