@@ -61,7 +61,7 @@ public class StageManager : MonoBehaviour
 
     private bool IsCakeStage()
     {
-        return allStage % 2 == 0;
+        return allStage % 2 == 1;
     }
 
     public void StageStart()

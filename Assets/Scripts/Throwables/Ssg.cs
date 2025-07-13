@@ -7,7 +7,8 @@ namespace Throwables
     public class Ssg : Throwable
     {
         private float _elapsed;
-
+        private bool _isEnter;
+        
         private void Start()
         {
             Camera.main.orthographicSize = 4f;
@@ -17,9 +18,22 @@ namespace Throwables
         {
         }
 
+        protected override void OnTriggerEnter2D(Collider2D other)
+        {
+            if (!other.CompareTag("Target")) return;
+            _isEnter = true;
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (!other.CompareTag("Target")) return;
+            _isEnter = false;
+        }
+
         private void FixedUpdate()
         {
             if (!IsThrown) return;
+            if (!_isEnter) return;
             
             if (Rb.velocity.magnitude > 0.5f)
             {
