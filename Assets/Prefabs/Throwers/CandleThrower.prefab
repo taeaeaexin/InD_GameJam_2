@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f094fa74823e494897f1b6f577b6d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwablePrefab: {fileID: 141538406048833799, guid: 0a10451d92323f742823cba8e087695f, type: 3}
+  throwablePrefab: {fileID: 1639615766933668811, guid: 31783ca1ac85c904588011ef1dce2bb1, type: 3}
   throwPoint: {fileID: 454577470532570079}
   throwableCount: 1
   maxThrowForce: 15
+  currentThrowable: {fileID: 0}

@@ -17,6 +17,15 @@ public class ZoomView : MonoBehaviour
     
     public void SaveToPNG(string filePath = "./screenshot/")
     {
+        if (string.IsNullOrEmpty(filePath))
+        {
+            filePath = Path.Combine(Application.persistentDataPath);
+        }
+
+        if(!Directory.Exists(filePath))
+        {
+            Directory.CreateDirectory(filePath);
+        }
         // 1) 현재 Active RT 백업
         var prev = RenderTexture.active;
         // 2) 대상 RT 활성화
@@ -39,5 +48,33 @@ public class ZoomView : MonoBehaviour
         // 6) 복원 및 메모리 정리
         RenderTexture.active = prev;
         DestroyImmediate(tex);
+    }
+
+    public Texture2D LoadRandomPNG(string filePath = "./screenshot/")
+    {
+        if(!Directory.Exists(filePath))
+        {
+            Debug.LogError($"경로가 존재하지 않습니다: {filePath}");
+            return null;
+        }
+
+        string[] files = Directory.GetFiles(filePath, "*.png");
+        if (files.Length == 0)
+        {
+            Debug.LogWarning("해당 폴더에 dlPNG 파일이 없습니다.");
+            return null;
+        }
+
+        // 랜덤 인덱스 선택
+        int randomIndex = UnityEngine.Random.Range(0, files.Length);
+        string randomFile = files[randomIndex];
+
+        // 로드
+        byte[] bytes = File.ReadAllBytes(randomFile);
+        Texture2D tex = new Texture2D(2, 2); // 임시 크기
+        tex.LoadImage(bytes);
+
+        Debug.Log($"랜덤 파일 로드: {randomFile}");
+        return tex;
     }
 }

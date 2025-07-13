@@ -1,4 +1,5 @@
 using System;
+using Throwables;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -17,8 +18,7 @@ namespace Throws
         
         private Vector2 _startPosition;
 
-        protected GameObject CurrentThrowable;
-
+        public GameObject currentThrowable;
         
         public event Action OnThrow;
         
@@ -35,13 +35,13 @@ namespace Throws
             InputSystem.Instance.OnMouseButtonHold -= OnMouseButtonHold;
             InputSystem.Instance.OnMouseButtonUp -= OnMouseButtonUp;
 
-            Destroy(CurrentThrowable);
+            if(currentThrowable) Destroy(currentThrowable);
         }
 
         protected virtual void OnMouseButtonDown(Vector2 mousePosition)
         {
             if (IsThrown) return;
-            
+            if (SoundManager.Instance) SoundManager.Instance.PlaySFXWithStop("sound_pluck");
             _startPosition = mousePosition;
         }
 
@@ -59,13 +59,14 @@ namespace Throws
         protected virtual void OnMouseButtonUp(Vector2 mousePosition)
         {
             IsThrown = true;
-            
+            if (SoundManager.Instance) SoundManager.Instance.StopSFX("sound_pluck");
+            if (SoundManager.Instance) SoundManager.Instance.Play_R_SFX("sound_throw_", 2);
             OnThrow?.Invoke();
         }
 
         protected void Spawn()
         {
-            CurrentThrowable = Instantiate(throwablePrefab, throwPoint.position, Quaternion.identity);
+            currentThrowable = Instantiate(throwablePrefab, throwPoint.position, Quaternion.identity);
         }
     }
 }

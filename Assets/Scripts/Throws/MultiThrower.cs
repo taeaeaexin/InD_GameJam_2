@@ -16,7 +16,7 @@ namespace Throws
         protected override void Start()
         {
             base.Start();
-
+            SoundManager.Instance.Play_R_SFX("sound/sound_bottle_opener_", 2);
             _wait = new WaitForSeconds(throwDelay);
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
@@ -47,9 +47,9 @@ namespace Throws
             {
                 Spawn();
 
-                var throwable = CurrentThrowable.GetComponent<Throwable>();
+                var throwable = currentThrowable.GetComponent<Throwable>();
                 
-                throwable.Throw(ThrowDirection, ThrowForce, 20f);
+                throwable.Throw(ThrowDirection, ThrowForce, 40f);
 
                 yield return _wait;
             }

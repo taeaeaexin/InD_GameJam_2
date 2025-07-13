@@ -1,6 +1,4 @@
-using System.Collections;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Interactables
 {
@@ -10,17 +8,29 @@ namespace Interactables
 
         private float _elapsed;
 
-        private bool _hasEntered = false;
+        private bool _hasEntered;
 
         private bool _isClear;
+
+        private void FixedUpdate()
+        {
+            if (_hasEntered && !_isClear)
+            {
+                _elapsed += Time.fixedDeltaTime;
+
+                if (!(_elapsed >= targetTime)) return;
+                StageManager.Instance.StageClear();
+                _isClear = true;
+            }
+        }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Failed")) StageManager.Instance.StageRestart();
             if (!other.CompareTag("Throwable")) return;
 
-            _elapsed = 0f; // 타이머 초기화
-            _hasEntered = true; // 동작 실행 플래그 리셋
+            _elapsed = 0f;
+            _hasEntered = true;
         }
 
         private void OnTriggerExit2D(Collider2D other)
@@ -29,21 +39,6 @@ namespace Interactables
 
             _elapsed = 0f;
             _hasEntered = false;
-            Debug.Log("트리거 벗어남 → 타이머 리셋");
         }
-
-        private void FixedUpdate()
-        {
-            if (_hasEntered && !_isClear)
-            {
-                _elapsed += Time.fixedDeltaTime;
-                Debug.Log($"트리거 내 머문 시간: {_elapsed:F2}s");
-
-                if (!(_elapsed >= targetTime)) return;
-                StageManager.Instance.StageClear();
-                _isClear = true;
-            }
-        }
-        
     }
 }

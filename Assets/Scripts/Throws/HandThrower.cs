@@ -17,8 +17,8 @@ namespace Throws
 
             Spawn();
             
-            _throwableRb = CurrentThrowable.GetComponent<Rigidbody2D>();
-            _throwable = CurrentThrowable.GetComponent<Throwable>();
+            _throwableRb = currentThrowable.GetComponent<Rigidbody2D>();
+            _throwable = currentThrowable.GetComponent<Throwable>();
             _throwableRb.isKinematic = true;
         }
         
@@ -31,6 +31,7 @@ namespace Throws
 
         protected override void OnMouseButtonUp(Vector2 mousePosition)
         {
+            base.OnMouseButtonUp(mousePosition);
             _throwableRb.isKinematic = false;
             _throwable.Throw(ThrowDirection, ThrowForce);
         }

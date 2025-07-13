@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -599582225, guid: 0f547fa5a89d94e268767e8374070e5c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -311,7 +311,7 @@ Transform:
   m_GameObject: {fileID: 5161060599342642045}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -6.25, y: -1.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -333,10 +333,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f094fa74823e494897f1b6f577b6d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwablePrefab: {fileID: 0}
+  throwablePrefab: {fileID: 2744200227779773046, guid: 3153c9a2b6e0b2d4883ae41bbdf40db6, type: 3}
   throwPoint: {fileID: 5128597673883164225}
   throwableCount: 1
   maxThrowForce: 15
+  currentThrowable: {fileID: 0}
 --- !u!212 &1444582037461689102
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -377,7 +378,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 4
   m_Sprite: {fileID: -1998992770, guid: 0f547fa5a89d94e268767e8374070e5c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
