@@ -26,5 +26,8 @@
 <br>
 
 ## 📷 시연
+<div align = "center">
+  <img src="https://github.com/user-attachments/assets/63333f6f-5a86-471c-a65a-f23d0425e6ae">
+</div>
 
 <br>
