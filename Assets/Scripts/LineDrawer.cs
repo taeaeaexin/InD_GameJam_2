@@ -11,8 +11,8 @@ public class LineDrawer : MonoBehaviour
         _line = GetComponent<LineRenderer>();
         _line.positionCount = 2;
         _line.enabled = false;
-        if (_cam == null) _cam = Camera.main;
         
+        _cam = Camera.main;
     }
 
     private void Start()
