@@ -11,6 +11,12 @@ namespace Throwables
 
         protected override void OnCollisionEnter2D(Collision2D collision)
         {
+            if (collision.collider.CompareTag("Failed") || collision.collider.CompareTag("Cake"))
+            {
+                StageManager.Instance.StageFailed();
+                return;
+            }
+            
             if (collision.collider.CompareTag("Cream"))
             {
                 StopToCollision();
