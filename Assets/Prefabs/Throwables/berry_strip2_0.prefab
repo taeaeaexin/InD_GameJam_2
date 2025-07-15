@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3324360880122123369}
   - component: {fileID: 740362689266552455}
   - component: {fileID: 4662350488385399410}
-  - component: {fileID: 2212802962745989749}
   m_Layer: 0
   m_Name: berry_strip2_0
   m_TagString: Throwable
@@ -184,16 +183,3 @@ PolygonCollider2D:
       - {x: 0.24, y: 0.02}
       - {x: 0.14999999, y: 0.25}
   m_UseDelaunayMesh: 0
---- !u!114 &2212802962745989749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2744200227779773046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8748c4c0faae46419f255964f138173, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  restitution: 1
